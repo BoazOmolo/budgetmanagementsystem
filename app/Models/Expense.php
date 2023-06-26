@@ -5,23 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Income extends Model
+class Expense extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'expenses_id',
         'amount',
-        'period',
-        'source_id',
-        'start_date',
-        'end_date',
+        'fees',
+        'file_id',
         'status',
         'createdby',
         'updatedby',
-        'file',
     ];
-
-    public function source()
-    {
-        return $this->belongsTo(Source::class, 'source_id');
-    }
 }

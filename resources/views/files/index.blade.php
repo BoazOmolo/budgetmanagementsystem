@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Incomes</h4>
+                        <h4 class="mb-sm-0">Files</h4>
                         
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Incomes</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Files</a></li>
                                 <li class="breadcrumb-item active">Index</li>
                             </ol>
                         </div>
@@ -22,8 +22,7 @@
                 </div>
             </div>
 
-            <a class="btn btn-primary mb-3" href="{{ route('incomes.create') }}">Add Income </a>
-
+            <a class="btn btn-primary mb-3" href="{{ route('files.create') }}">Add New File </a>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -32,25 +31,17 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Amount</th>
-                                        <th>Period</th>
-                                        <th>Income source</th>
-                                        <th>Start date</th>
-                                        <th>End date</th>
-                                        <th>File</th>
+                                        <th>File Type</th>
+                                        <th>File ID</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($incomes as $index => $income)
+                                    @foreach($files as $index => $file)
                                         <tr>
                                             <td>{{ $index +=1}}</td>
-                                            <td>{{ $income->amount }}</td>
-                                            <td>{{ $income->period }}</td>
-                                            <td>{{ $income->source_id }}</td>
-                                            <td>{{ $income->start_date }}</td>
-                                            <td>{{ $income->end_date }}</td>
-                                            <td>{{ $income->file }}</td>
+                                            <td>{{ $file->type }}</td>
+                                            <td>{{ $file->type_id }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>

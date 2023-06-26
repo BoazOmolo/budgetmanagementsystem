@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('incomes', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('amount');
-            $table->string('period');
-            $table->unsignedBigInteger('source_id')->nullable()->after('id');;
-            $table->foreign('source_id')->references('id')->on('sources')->onDelete('cascade');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('file')->nullable();
+            $table->string('type');
+            $table->unsignedBigInteger('type_id')->index()->nullable();
             $table->text('status');
             $table->string('createdby');
             $table->string('updatedby');
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incomes');
+        Schema::dropIfExists('files');
     }
 };

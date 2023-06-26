@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Income;
+use App\Models\Source;
 
 class IncomesController extends Controller
 {
@@ -38,6 +39,7 @@ class IncomesController extends Controller
     public function store(Request $request)
     {
         $username = Auth::user()->name;
+        // $source = Source::find($id);
 
         $income = new Income();
         $income->amount = $request->input('amount');
@@ -45,6 +47,8 @@ class IncomesController extends Controller
         $income->source_id = $request->input('source_id');
         $income->start_date = $request->input('start_date');
         $income->end_date = $request->input('end_date');
+        $income->file = $request->input('file');
+        // $income->source()->associate($sources);
         $income->status = 1;
         $income->createdby = $username;
         $income->updatedby = "";

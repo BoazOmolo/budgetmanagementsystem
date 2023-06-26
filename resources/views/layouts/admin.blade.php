@@ -196,6 +196,18 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('sources.index') }}">Income Sources</a></li>
                                 </ul>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('budgets.index') }}">Budgets</a></li>
+                                </ul>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('expensescategories.index') }}">Expense Categories</a></li>
+                                </ul>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('expenses.index') }}">Expenses</a></li>
+                                </ul>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('files.index') }}">Files</a></li>
+                                </ul>
                             </li>
 
                             
