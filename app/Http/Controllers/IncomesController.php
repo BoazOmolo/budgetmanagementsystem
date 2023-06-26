@@ -27,7 +27,9 @@ class IncomesController extends Controller
      */
     public function create()
     {  
-        return view('incomes.create');
+        $sources = Source::all();
+        return view('incomes.create', compact('sources'));
+        // return view('incomes.create');
     }
 
     /**
@@ -36,26 +38,69 @@ class IncomesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+        // $username = Auth::user()->name;
+        // // $source = Source::find($id);
+        // // $source = Source::where('source_id', $request->input('source'))->first();
+        // $source = Source::where('source', $request->input('source'))->first();
+
+        
+        // if ($source) {
+        //     $income = new Income();
+        //     $income->amount = $request->input('amount');
+        //     $income->period = $request->input('period');
+        //     $income->source_id = $source->id;
+        //     $income->start_date = $request->input('start_date');
+        //     $income->end_date = $request->input('end_date');
+        //     $income->file = $request->input('file');
+        //     $income->status = 1;
+        //     $income->createdby = $username;
+        //     $income->updatedby = "";
+        //     $income->save();
+
+        // } else {
+        //     \Log::error('Source not found');
+        //     return redirect()->back()->with('error', 'Source not found.');
+        // }
+
+        // return redirect()->route('incomes.index')->with('success', 'Income created successfully.');
+        
+    // }
     public function store(Request $request)
     {
         $username = Auth::user()->name;
-        // $source = Source::find($id);
 
         $income = new Income();
         $income->amount = $request->input('amount');
         $income->period = $request->input('period');
-        $income->source_id = $request->input('source_id');
         $income->start_date = $request->input('start_date');
         $income->end_date = $request->input('end_date');
         $income->file = $request->input('file');
-        // $income->source()->associate($sources);
         $income->status = 1;
         $income->createdby = $username;
         $income->updatedby = "";
+
+        // Check if source is selected
+        // Check if source is selected
+        // if ($request->has('source')) {
+        //     $source = Source::where('source', $request->input('source'))->first();
+
+        //     // Check if source is found
+        //     if ($source) {
+        //         $income->source_id = $source->id;
+        //     }
+        // }
+        // Check if source_id is selected
+        if ($request->has('source_id')) {
+            $income->source_id = $request->input('source_id');
+        }
+
         $income->save();
 
         return redirect()->route('incomes.index')->with('success', 'Income created successfully.');
     }
+
 
     /**
      * Display the specified resource.

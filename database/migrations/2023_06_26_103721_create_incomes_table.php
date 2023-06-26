@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('amount');
             $table->string('period');
-            $table->unsignedBigInteger('source_id')->nullable()->after('id');;
+            $table->unsignedBigInteger('source_id')->nullable();
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');

@@ -47,7 +47,8 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $income->amount }}</td>
                                             <td>{{ $income->period }}</td>
-                                            <td>{{ $income->source_id }}</td>
+                                            {{-- <td>{{ $income->source->source }}</td> --}}
+                                            <td>{{ $income->source ? $income->source->source : '' }}</td>
                                             <td>{{ $income->start_date }}</td>
                                             <td>{{ $income->end_date }}</td>
                                             <td>{{ $income->file }}</td>
