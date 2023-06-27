@@ -150,7 +150,13 @@
                             @endif
                             <h4 class="card-title">Add Location Details</h4>
                             <form action="{{ route('incomes.store') }}" method="POST">
-                                @csrf                 
+                                @csrf  
+                                <div class="row mb-3">
+                                    <label for="amount" class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="name" id="name" required>
+                                    </div>
+                                </div>               
                                 <div class="row mb-3">
                                     <label for="amount" class="col-sm-2 col-form-label">Amount</label>
                                     <div class="col-sm-10">

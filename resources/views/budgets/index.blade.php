@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Name</th>
                                         <th>Amount</th>
                                         <th>Expenses</th>
                                         <th>File</th>
@@ -41,6 +42,7 @@
                                     @foreach($budgets as $index => $budget)
                                         <tr>
                                             <td>{{ $index +=1}}</td>
+                                            <td>{{ $budget->name }}</td>
                                             <td>{{ $budget->amount }}</td>
                                             <td>{{ $budget->expenses_id ? $budget->expense->name : '' }}</td>
                                             {{-- <td>{{ $budget->name ? $budget->name->name : '' }}</td>

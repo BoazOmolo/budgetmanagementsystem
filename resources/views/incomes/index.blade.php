@@ -32,6 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Name</th>
                                         <th>Amount</th>
                                         <th>Period</th>
                                         <th>Income source</th>
@@ -45,6 +46,7 @@
                                     @foreach($incomes as $index => $income)
                                         <tr>
                                             <td>{{ $index +=1}}</td>
+                                            <td>{{ $income->name }}</td>
                                             <td>{{ $income->amount }}</td>
                                             <td>{{ $income->period }}</td>
                                             {{-- <td>{{ $income->source->source }}</td> --}}

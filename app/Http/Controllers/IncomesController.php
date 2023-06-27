@@ -72,6 +72,7 @@ class IncomesController extends Controller
         $username = Auth::user()->name;
 
         $income = new Income();
+        $income->name = $request->input('name');
         $income->amount = $request->input('amount');
         $income->period = $request->input('period');
         $income->start_date = $request->input('start_date');

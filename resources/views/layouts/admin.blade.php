@@ -183,39 +183,41 @@
                             <li class="menu-title">Pages</li>
 
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-table-2"></i>
-                                    <span>Tables</span>
+                                <a href="{{ route('incomes.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Incomes</span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('tables.index') }}">Data Tables</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('incomes.index') }}">Incomes</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('sources.index') }}">Income Sources</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('budgets.index') }}">Budgets</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('expensescategories.index') }}">Expense Categories</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('expenses.index') }}">Expenses</a></li>
-                                </ul>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('files.index') }}">Files</a></li>
-                                </ul>
+                            </li>  
+                            <li>
+                                <a href="{{ route('sources.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Income Sources</span>
+                                </a>
+                            </li>  
+                            <li>
+                                <a href="{{ route('budgets.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Budgets</span>
+                                </a>
+                            </li>  
+                            <li>
+                                <a href="{{ route('expensescategories.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Expense Categories</span>
+                                </a>
+                            </li>  
+                            <li>
+                                <a href="{{ route('expenses.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Expenses</span>
+                                </a>
                             </li>
-
-                            
-
-                            
-
-                            
-
+                            <li>
+                                <a href="{{ route('files.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Files</span>
+                                </a>
+                            </li>        
                         </ul>
                     </div>
                     <!-- Sidebar -->

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('amount');
             $table->string('period');
             $table->unsignedBigInteger('source_id')->nullable();

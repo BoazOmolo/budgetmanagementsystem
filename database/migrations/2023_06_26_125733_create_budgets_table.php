@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('amount');
             $table->unsignedBigInteger('expenses_id')->index()->nullable();
             $table->foreign('expenses_id')->references('id')->on('expenses')->onDelete('cascade');

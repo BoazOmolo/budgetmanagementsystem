@@ -42,8 +42,8 @@ class BudgetsController extends Controller
         $username = Auth::user()->name;
 
         $budget = new Budget();
+        // $budget->name = $request->input('name');
         $budget->amount = $request->input('amount');
-        // $budget->expenses_id = $request->input('expenses_id');
         $budget->file = $request->input('file');
         $budget->status = 1;
         $budget->createdby = $username;
