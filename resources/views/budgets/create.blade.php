@@ -46,10 +46,21 @@
                                         <input class="form-control" type="number" name="amount" id="amount">
                                     </div>
                                 </div> 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="example-email-input" class="col-sm-2 col-form-label">Source</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="text" placeholder="Search" name="expenses_id" id="expenses_id">
+                                    </div>
+                                </div> --}}
+                                <div class="row mb-3">
+                                    <label for="source" class="col-sm-2 col-form-label">Source</label>
+                                    <div class="col-sm-10">
+                                        <select name="expenses_id" id="source" class="form-select" aria-label="Default select example">
+                                            <option selected disabled>Select Source</option>
+                                            @foreach ($expenses as $expense)
+                                                <option value="{{ $expense->id }}">{{ $expense->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

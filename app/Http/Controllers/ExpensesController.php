@@ -40,10 +40,12 @@ class ExpensesController extends Controller
         $username = Auth::user()->name;
 
         $expense = new Expense();
-        $expense->expenses_id = $request->input('expenses_id');
+        // $expense->expenses_id = $request->input('expenses_id');
+        $expense->name = $request->input('name');
+        $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');
-        $expense->file_id = $request->input('file_id');
+        $expense->file = $request->input('file');
         $expense->status = 1;
         $expense->createdby = $username;
         $expense->updatedby = "";

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Budget;
+use App\Models\Expense;
 
 class BudgetsController extends Controller
 {
@@ -26,7 +27,8 @@ class BudgetsController extends Controller
      */
     public function create()
     {
-        return view('budgets.create');
+        $expenses = Expense::all();
+        return view('budgets.create', compact('expenses'));
     }
 
     /**
@@ -41,11 +43,16 @@ class BudgetsController extends Controller
 
         $budget = new Budget();
         $budget->amount = $request->input('amount');
-        $budget->expenses_id = $request->input('expenses_id');
+        // $budget->expenses_id = $request->input('expenses_id');
         $budget->file = $request->input('file');
         $budget->status = 1;
         $budget->createdby = $username;
         $budget->updatedby = "";
+
+        if ($request->has('expenses_id')) {
+            $budget->expenses_id = $request->input('expenses_id');
+        }
+
         $budget->save();
 
         return redirect()->route('budgets.index')->with('success', 'Income created successfully.');

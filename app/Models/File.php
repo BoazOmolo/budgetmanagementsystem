@@ -9,8 +9,8 @@ class File extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'type',
         'type_id',
+        'type',
         'status',
         'createdby',
         'updatedby',

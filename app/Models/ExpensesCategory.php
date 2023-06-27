@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Expense;
 
 class ExpensesCategory extends Model
 {
@@ -16,4 +17,9 @@ class ExpensesCategory extends Model
         'createdby',
         'updatedby',
     ];
+
+    public function expense()
+    {
+        return $this->belongsTo(Expense::class, 'expenses_id');
+    }
 }

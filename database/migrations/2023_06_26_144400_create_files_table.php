@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
             $table->unsignedBigInteger('type_id')->index()->nullable();
+            $table->string('type');
             $table->text('status');
             $table->string('createdby');
             $table->string('updatedby');

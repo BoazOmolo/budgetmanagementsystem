@@ -31,7 +31,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Expense ID</th>
+                                        {{-- <th>Expense ID</th> --}}
+                                        <th>Name</th>
+                                        <th>Description</th>
                                         <th>Amount</th>
                                         <th>Fees</th>
                                         <th>File ID</th>
@@ -42,10 +44,12 @@
                                     @foreach($expenses as $index => $expense)
                                         <tr>
                                             <td>{{ $index +=1}}</td>
-                                            <td>{{ $expense->expenses_id }}</td>
+                                            {{-- <td>{{ $expense->expenses_id }}</td> --}}
+                                            <td>{{ $expense->name }}</td>
+                                            <td>{{ $expense->description }}</td>
                                             <td>{{ $expense->amount }}</td>
                                             <td>{{ $expense->fees }}</td>
-                                            <td>{{ $expense->file_id }}</td>
+                                            <td>{{ $expense->file }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>

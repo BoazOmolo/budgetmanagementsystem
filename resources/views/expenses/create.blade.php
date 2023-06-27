@@ -40,18 +40,30 @@
                             <h4 class="card-title">Add Expense Details</h4>
                             <form action="{{ route('expenses.store') }}" method="POST">
                                 @csrf                 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Expense ID</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="number" name="expenses_id" id="expenses_id">
                                     </div>
-                                </div> 
+                                </div>  --}}
                                 {{-- <div class="mb-3">
+                                    <label>Name</label>
+                                    <div>
+                                        <textarea required class="form-control" rows="5" type="text" name="name" id="name"></textarea>
+                                    </div>
+                                </div> --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="name" id="name">
+                                    </div>
+                                </div> 
+                                <div class="mb-3">
                                     <label>Description</label>
                                     <div>
                                         <textarea required class="form-control" rows="5" type="text" name="description" id="description"></textarea>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Amount</label>
                                     <div class="col-sm-10">
@@ -64,12 +76,18 @@
                                         <input class="form-control" type="number" name="fees" id="fees">
                                     </div>
                                 </div> 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">File ID</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="number" name="file_id" id="file_id">
                                     </div>
-                                </div> 
+                                </div>  --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">File</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="file" id="file">
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
                                     {{-- <label  class="col-sm-2 col-form-label">Amount</label>
                                     <div>

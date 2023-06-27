@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ExpensesCategory;
+use App\Models\Expense;
 
 class ExpensesCategoriesController extends Controller
 {
@@ -26,7 +27,8 @@ class ExpensesCategoriesController extends Controller
      */
     public function create()
     {
-        return view('expensescategories.create');
+        $expenses = Expense::all();
+        return view('expensescategories.create', compact('expenses'));
     }
 
     /**
@@ -42,10 +44,15 @@ class ExpensesCategoriesController extends Controller
         $expensescategory = new ExpensesCategory();
         $expensescategory->name = $request->input('name');
         $expensescategory->description = $request->input('description');
-        $expensescategory->expenses_id = $request->input('expenses_id');
+        // $expensescategory->expenses_id = $request->input('expenses_id');
         $expensescategory->status = 1;
         $expensescategory->createdby = $username;
         $expensescategory->updatedby = "";
+
+        if ($request->has('expenses_id')) {
+            $expensescategory->expenses_id = $request->input('expenses_id');
+        }
+
         $expensescategory->save();
 
         return redirect()->route('expensescategories.index')->with('success', 'Income created successfully.');
