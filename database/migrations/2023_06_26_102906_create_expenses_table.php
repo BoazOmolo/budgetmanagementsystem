@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('amount');
             $table->string('fees');
-            // $table->unsignedBigInteger('file_id')->index()->nullable();
+            $table->unsignedBigInteger('file_id')->index()->nullable();
             $table->text('status');
             $table->string('createdby');
             $table->string('updatedby');
