@@ -21,6 +21,9 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
+
+        $username = Auth::user()->name;
+        
         $file = $request->file('file');
         $file->store('files');
         $fileType = $request->input('type');
@@ -29,7 +32,7 @@ class FilesController extends Controller
         $fileEntry = new File();
         $fileEntry->type = $fileType;
         $fileEntry->type_id = $file->id;
-        $fileEntry->status = 'active'; // Assuming status is a text column
+        $fileEntry->status = 1; 
         $fileEntry->createdby = Auth::user()->name;
         $fileEntry->updatedby = '';
         $fileEntry->save();

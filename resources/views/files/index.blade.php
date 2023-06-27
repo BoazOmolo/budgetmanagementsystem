@@ -32,7 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>File Type</th>
-                                        <th>File ID</th>
+                                        <th>File Type ID</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>

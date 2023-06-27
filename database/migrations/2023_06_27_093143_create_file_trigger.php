@@ -17,19 +17,19 @@ return new class extends Migration
         CREATE TRIGGER insert_file_trigger_budgets AFTER INSERT ON budgets FOR EACH ROW
         BEGIN
             INSERT INTO files (type_id, type, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Budgets", "active", "", "", NOW(), NOW());
+            VALUES (NEW.id, "Budgets", "1", "", "", NOW(), NOW());
         END;
 
         CREATE TRIGGER insert_file_trigger_expenses AFTER INSERT ON expenses FOR EACH ROW
         BEGIN
             INSERT INTO files (type_id, type, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Expenses", "active", "", "", NOW(), NOW());
+            VALUES (NEW.id, "Expenses", "1", "", "", NOW(), NOW());
         END;
 
         CREATE TRIGGER insert_file_trigger_incomes AFTER INSERT ON incomes FOR EACH ROW
         BEGIN
             INSERT INTO files (type_id, type, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Incomes", "active", "", "", NOW(), NOW());
+            VALUES (NEW.id, "Incomes", "1", "", "", NOW(), NOW());
         END;
     ');
     }
