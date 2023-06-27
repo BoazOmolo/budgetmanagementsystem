@@ -154,13 +154,13 @@
                                 <div class="row mb-3">
                                     <label for="amount" class="col-sm-2 col-form-label">Amount</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="number" name="amount" id="amount">
+                                        <input class="form-control" type="number" name="amount" id="amount" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Select Period</label>
                                     <div class="col-sm-10">
-                                        <select name="period" id="period" class="form-select" aria-label="Default select example">
+                                        <select name="period" id="period" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Period</option>
                                             <option value="weekly">Weekly</option>
                                             <option value="monthly">Monthly</option>
@@ -182,7 +182,7 @@
                                 <div class="row mb-3">
                                     <label for="source" class="col-sm-2 col-form-label">Source</label>
                                     <div class="col-sm-10">
-                                        <select name="source_id" id="source" class="form-select" aria-label="Default select example">
+                                        <select name="source_id" id="source" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Source</option>
                                             @foreach ($sources as $source)
                                                 <option value="{{ $source->id }}">{{ $source->source }}</option>
@@ -194,13 +194,13 @@
                                 <div class="row mb-3">
                                     <label for="start_date" class="col-sm-2 col-form-label">Start Date</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="date" name="start_date" id="start_date">
+                                        <input class="form-control" type="date" name="start_date" id="start_date" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="end_date" class="col-sm-2 col-form-label">End Date</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="date" name="end_date" id="end_date">
+                                        <input class="form-control" type="date" name="end_date" id="end_date" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

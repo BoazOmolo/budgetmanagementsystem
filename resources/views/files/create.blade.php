@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -23,7 +22,7 @@
                 </div>
             </div>
             <!-- end page title -->
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -39,35 +38,33 @@
                             @endif
                             <h4 class="card-title">Add File Details</h4>
                             <form action="{{ route('files.store') }}" method="POST">
-                                @csrf                 
-                                
+                                @csrf
+
                                 <div>
                                     <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Select Type</label>
-                                    <div class="col-sm-10">
-                                        <select name="type" id ="period"class="form-select" aria-label="Default select example">
-                                            <option selected="">Open this select menu</option>
-                                            <option value="budget">Budget</option>
-                                            <option value="income">Income</option>
-                                            <option value="expense">Expense</option>
+                                        <label class="col-sm-2 col-form-label">Select Type</label>
+                                        <div class="col-sm-10">
+                                            <select name="type" id="period" class="form-select" aria-label="Default select example" required>
+                                                <option selected="">Open this select menu</option>
+                                                <option value="budget">Budget</option>
+                                                <option value="income">Income</option>
+                                                <option value="expense">Expense</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Type ID</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="number" name="type_id" id="type_id">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Type ID</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="number" name="type_id" id="type_id">
-                                    </div>
-                                </div> 
-                               
-                               
-                               
+
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>
                                 </div>
                             </form>
-                            <!-- end row -->
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -75,7 +72,7 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-    
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -90,7 +87,6 @@
             </div>
         </div>
     </footer>
-    
 </div>
 <!-- end main content-->
 @endsection

@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -18,12 +17,11 @@
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- end page title -->
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -39,25 +37,22 @@
                             @endif
                             <h4 class="card-title">Add Location Details</h4>
                             <form action="{{ route('expensescategories.store') }}" method="POST">
-                                @csrf                 
+                                @csrf
+
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="number" name="name" id="name">
+                                        <input class="form-control" type="text" name="name" id="name" required>
                                     </div>
-                                </div> 
+                                </div>
+
                                 <div class="mb-3">
                                     <label>Description</label>
                                     <div>
-                                        <textarea required class="form-control" rows="5" type="text" name="description" id="description"></textarea>
+                                        <textarea class="form-control" rows="5" type="text" name="description" id="description" required></textarea>
                                     </div>
                                 </div>
-                                {{-- <div class="row mb-3">
-                                    <label  class="col-sm-2 col-form-label">Description</label>
-                                    <div>
-                                        <textarea required class="form-control" type="text" name="description" id="description">
-                                    </div>
-                                </div>  --}}
+
                                 <div class="row mb-3">
                                     <label for="source" class="col-sm-2 col-form-label">Source</label>
                                     <div class="col-sm-10">
@@ -69,19 +64,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Expense</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" placeholder="Search" name="expenses_id" id="expenses_id">
-                                    </div>
-                                </div> --}}
-                               
+
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>
                                 </div>
                             </form>
-                            <!-- end row -->
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -89,7 +77,7 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-    
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -104,7 +92,6 @@
             </div>
         </div>
     </footer>
-    
 </div>
 <!-- end main content-->
 @endsection

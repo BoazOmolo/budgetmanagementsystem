@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -18,12 +17,11 @@
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- end page title -->
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -39,23 +37,19 @@
                             @endif
                             <h4 class="card-title">Add Location Details</h4>
                             <form action="{{ route('budgets.store') }}" method="POST">
-                                @csrf                 
+                                @csrf
+
                                 <div class="row mb-3">
-                                    <label for="example-number-input" class="col-sm-2 col-form-label">Amount</label>
+                                    <label for="amount" class="col-sm-2 col-form-label">Amount</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="number" name="amount" id="amount">
+                                        <input class="form-control" type="number" name="amount" id="amount" required>
                                     </div>
-                                </div> 
-                                {{-- <div class="row mb-3">
-                                    <label for="example-email-input" class="col-sm-2 col-form-label">Source</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" placeholder="Search" name="expenses_id" id="expenses_id">
-                                    </div>
-                                </div> --}}
+                                </div>
+
                                 <div class="row mb-3">
                                     <label for="source" class="col-sm-2 col-form-label">Source</label>
                                     <div class="col-sm-10">
-                                        <select name="expenses_id" id="source" class="form-select" aria-label="Default select example">
+                                        <select name="expenses_id" id="source" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Source</option>
                                             @foreach ($expenses as $expense)
                                                 <option value="{{ $expense->id }}">{{ $expense->name }}</option>
@@ -63,18 +57,19 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">File</label>
                                     <div class="input-group">
                                         <input type="file" class="form-control" name="file" id="file">
                                     </div>
                                 </div>
+
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>
                                 </div>
                             </form>
-                            <!-- end row -->
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -82,7 +77,7 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-    
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -97,7 +92,7 @@
             </div>
         </div>
     </footer>
-    
+
 </div>
 <!-- end main content-->
 @endsection
