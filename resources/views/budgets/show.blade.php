@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <p class="card-text">Name: {{ $budget->name }}</p>
                     <p class="card-text">Amount: {{ $budget->amount }}</p>
-                    <p class="card-text">Expense: {{ $budget->expenses_id }}</p>
+                    <p class="card-text">Expense: {{ $budget->expenses_id ? $budget->expense->name : '' }}</p>
                     <p class="card-text">File: {{ $budget->file }}</p>
                 </div>
             </div>
