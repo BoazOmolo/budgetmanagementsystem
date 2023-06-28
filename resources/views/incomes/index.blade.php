@@ -55,9 +55,9 @@
                                             <td>{{ $income->end_date }}</td>
                                             <td>{{ $income->file }}</td>
                                             <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a>
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('incomes.show', $income->id ) }}">View</a>
+                                                <a class="btn btn-secondary upcube-btn" href="{{ route('incomes.edit', $income->id ) }}">Edit</a>
+                                                <form action="{{ route('incomes.destroy', $income->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>

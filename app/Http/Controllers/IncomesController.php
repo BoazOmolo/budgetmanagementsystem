@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Income;
 use App\Models\Source;
 
@@ -111,7 +112,8 @@ class IncomesController extends Controller
      */
     public function show($id)
     {
-        //
+        $income = Income::findOrFail($id);
+        return view('incomes.show', compact('income'));
     }
 
     /**
@@ -122,8 +124,9 @@ class IncomesController extends Controller
      */
     public function edit($id)
     {
-        // $item = YourModel::findOrFail($id);
-        // return view('items.edit', compact('item'));
+        $income = Income::findOrFail($id);
+        $sources = Source::all();
+        return view('incomes.edit', compact('income', 'sources'));
     }
 
     /**
@@ -135,19 +138,41 @@ class IncomesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $item = YourModel::findOrFail($id);
-        // $item->amount = $request->input('amount');
-        // $item->period = $request->input('period');
-        // $item->source_id = $request->input('source_id');
-        // $item->start_date = $request->input('start_date');
-        // $item->end_date = $request->input('end_date');
-        // $item->status = $request->input('status');
-        // $item->createdby = $request->input('createdby');
-        // $item->updatedby = $request->input('updatedby');
-        // $item->save();
+        $username = Auth::user()->name;
 
-        // return redirect()->route('items.index')->with('success', 'Item updated successfully.');
+        $income = Income::findOrFail($id);
+        $income->name = $request->input('name');
+        $income->amount = $request->input('amount');
+        $income->period = $request->input('period');
+        $income->start_date = $request->input('start_date');
+        $income->end_date = $request->input('end_date');
+        $income->status = 1;
+        $income->updatedby = $username;
+
+
+        if ($request->has('source_id')) {
+            $income->source_id = $request->input('source_id');
+        }
+
+        // Check if a new file is uploaded
+        if ($request->hasFile('file')) {
+            // Delete the old file if it exists
+            if ($income->file) {
+                // Assuming you have a storage disk named 'public' configured in your filesystems.php
+                Storage::disk('public')->delete($income->file);
+            }
+
+            // Store the new file
+            $file = $request->file('file');
+            $path = $file->store('income_files', 'public');
+            $income->file = $path;
+        }
+
+        $income->save();
+
+        return redirect()->route('incomes.index')->with('success', 'Income updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -157,9 +182,16 @@ class IncomesController extends Controller
      */
     public function destroy($id)
     {
-        // $item = YourModel::findOrFail($id);
-        // $item->delete();
+        $income = Income::findOrFail($id);
 
-        // return redirect()->route('items.index')->with('success', 'Item deleted successfully.');
+        // Delete the file associated with the income if it exists
+        if ($income->file) {
+            // Assuming you have a storage disk named 'public' configured in your filesystems.php
+            Storage::disk('public')->delete($income->file);
+        }
+
+        $income->delete();
+
+        return redirect()->route('incomes.index')->with('success', 'Income deleted successfully.');
     }
 }

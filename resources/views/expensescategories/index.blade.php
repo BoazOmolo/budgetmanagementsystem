@@ -45,9 +45,9 @@
                                             <td>{{ $expensescategory->description }}</td>
                                             <td>{{ $expensescategory->expenses_id ? $expensescategory->expense->name : '' }}</td>
                                             <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a>
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('expensescategories.show', $expensescategory->id ) }}">View</a>
+                                                <a class="btn btn-secondary upcube-btn" href="{{ route('expensescategories.edit', $expensescategory->id ) }}">Edit</a>
+                                                <form action="{{ route('expensescategories.destroy', $expensescategory->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>

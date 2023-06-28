@@ -57,7 +57,8 @@ class SourcesController extends Controller
      */
     public function show($id)
     {
-        //
+        $source = Source::findOrFail($id);
+        return view('sources.show', compact('source'));
     }
 
     /**
@@ -68,7 +69,8 @@ class SourcesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $source = Source::findOrFail($id);
+        return view('sources.edit', compact('source'));
     }
 
     /**
@@ -80,7 +82,15 @@ class SourcesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $source = Source::findOrFail($id);
+        $source->source = $request->input('source');
+        $source->status = 1;
+        $source->updatedby = $username;
+        $source->save();
+
+        return redirect()->route('sources.index')->with('success', 'Income source updated successfully.');
     }
 
     /**
@@ -91,6 +101,9 @@ class SourcesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $source = Source::findOrFail($id);
+        $source->delete();
+
+        return redirect()->route('sources.index')->with('success', 'Income source deleted successfully.');
     }
 }

@@ -36,7 +36,7 @@
                                         <th>Description</th>
                                         <th>Amount</th>
                                         <th>Fees</th>
-                                        <th>File ID</th>
+                                        <th>File</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -51,9 +51,9 @@
                                             <td>{{ $expense->fees }}</td>
                                             <td>{{ $expense->file }}</td>
                                             <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a>
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('expenses.show', $expense->id ) }}">View</a>
+                                                <a class="btn btn-secondary upcube-btn" href="{{ route('expenses.edit', $expense->id ) }}">Edit</a>
+                                                <form action="{{ route('expenses.destroy', $expense->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>

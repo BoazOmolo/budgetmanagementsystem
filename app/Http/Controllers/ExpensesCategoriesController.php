@@ -66,7 +66,8 @@ class ExpensesCategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $expensescategory = ExpensesCategory::findOrFail($id);
+        return view('expensescategories.show', compact('expensescategory'));
     }
 
     /**
@@ -77,7 +78,9 @@ class ExpensesCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $expensescategory = ExpensesCategory::findOrFail($id);
+        $expenses = Expense::all();
+        return view('expensescategories.edit', compact('expensescategory', 'expenses'));
     }
 
     /**
@@ -89,7 +92,18 @@ class ExpensesCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $expensescategory = ExpensesCategory::findOrFail($id);
+        $expensescategory->name = $request->input('name');
+        $expensescategory->description = $request->input('description');
+        $expensescategory->expenses_id = $request->input('expenses_id');
+        $expensescategory->status = 1;
+        $expensescategory->updatedby = $username;
+
+        $expensescategory->save();
+
+        return redirect()->route('expensescategories.index')->with('success', 'Expense Category updated successfully.');
     }
 
     /**
@@ -100,6 +114,9 @@ class ExpensesCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $expensescategory = ExpensesCategory::findOrFail($id);
+        $expensescategory->delete();
+
+        return redirect()->route('expensescategories.index')->with('success', 'Expense Category deleted successfully.');
     }
 }

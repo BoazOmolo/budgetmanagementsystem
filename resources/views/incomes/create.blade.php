@@ -148,7 +148,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Add Location Details</h4>
+                            <h4 class="card-title">Add Income Details</h4>
                             <form action="{{ route('incomes.store') }}" method="POST">
                                 @csrf  
                                 <div class="row mb-3">

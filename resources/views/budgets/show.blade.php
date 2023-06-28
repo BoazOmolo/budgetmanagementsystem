@@ -26,13 +26,10 @@
 
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text">Name: {{ $income->name }}</p>
-                    <p class="card-text">Amount: {{ $income->amount }}</p>
-                    <p class="card-text">Period: {{ $income->period }}</p>
-                    <p class="card-text">Income source: {{ $income->source ? $income->source->source : '' }}</p>
-                    <p class="card-text">Start date: {{ $income->start_date }}</p>
-                    <p class="card-text">End date: {{ $income->end_date }}</p>
-                    <p class="card-text">File: {{ $income->file }}</p>
+                    <p class="card-text">Name: {{ $budget->name }}</p>
+                    <p class="card-text">Amount: {{ $budget->amount }}</p>
+                    <p class="card-text">Expense: {{ $budget->expenses_id }}</p>
+                    <p class="card-text">File: {{ $budget->file }}</p>
                 </div>
             </div>
             <div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Expense;
 
 class ExpensesController extends Controller
@@ -62,7 +63,8 @@ class ExpensesController extends Controller
      */
     public function show($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        return view('expenses.show', compact('expense'));
     }
 
     /**
@@ -73,7 +75,8 @@ class ExpensesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        return view('expenses.edit', compact('expense'));
     }
 
     /**
@@ -85,7 +88,33 @@ class ExpensesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $expense = Expense::findOrFail($id);
+        $expense->name = $request->input('name');
+        $expense->description = $request->input('description');
+        $expense->amount = $request->input('amount');
+        $expense->fees = $request->input('fees');
+        $expense->file = $request->input('file');
+        $expense->status = 1;
+        $expense->updatedby = $username;
+
+        if ($request->hasFile('file')) {
+            // Delete the old file if it exists
+            if ($expense->file) {
+                // Assuming you have a storage disk named 'public' configured in your filesystems.php
+                Storage::disk('public')->delete($expense->file);
+            }
+
+            // Store the new file
+            $file = $request->file('file');
+            $path = $file->store('expense_files', 'public');
+            $expense->file = $path;
+        }
+
+        $expense->save();
+
+        return redirect()->route('expenses.index')->with('success', 'Expense updated successfully.');
     }
 
     /**
@@ -96,6 +125,16 @@ class ExpensesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+
+        // Delete the file associated with the income if it exists
+        if ($expense->file) {
+            // Assuming you have a storage disk named 'public' configured in your filesystems.php
+            Storage::disk('public')->delete($expense->file);
+        }
+
+        $expense->delete();
+
+        return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }
 }

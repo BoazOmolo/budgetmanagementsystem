@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Budget;
 use App\Models\Expense;
 
@@ -66,7 +67,8 @@ class BudgetsController extends Controller
      */
     public function show($id)
     {
-        //
+        $budget = Budget::findOrFail($id);
+        return view('budgets.show', compact('budget'));
     }
 
     /**
@@ -77,7 +79,9 @@ class BudgetsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $budget = Budget::findOrFail($id);
+        $expenses = Expense::all();
+        return view('budgets.edit', compact('budget', 'expenses'));
     }
 
     /**
@@ -89,7 +93,32 @@ class BudgetsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $budget = Budget::findOrFail($id);
+        $budget->name = $request->input('name');
+        $budget->amount = $request->input('amount');
+        $budget->expenses_id = $request->input('expenses_id');
+        $budget->file = $request->input('file');
+        $budget->status = 1;
+        $budget->updatedby = $username;
+
+        if ($request->hasFile('file')) {
+            // Delete the old file if it exists
+            if ($budget->file) {
+                // Assuming you have a storage disk named 'public' configured in your filesystems.php
+                Storage::disk('public')->delete($budget->file);
+            }
+
+            // Store the new file
+            $file = $request->file('file');
+            $path = $file->store('budget_files', 'public');
+            $budget->file = $path;
+        }
+
+        $budget->save();
+
+        return redirect()->route('budgets.index')->with('success', 'Budget updated successfully.');
     }
 
     /**
@@ -100,6 +129,16 @@ class BudgetsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $budget = Budget::findOrFail($id);
+
+        // Delete the file associated with the income if it exists
+        if ($budget->file) {
+            // Assuming you have a storage disk named 'public' configured in your filesystems.php
+            Storage::disk('public')->delete($budget->file);
+        }
+
+        $budget->delete();
+
+        return redirect()->route('budgets.index')->with('success', 'Budget deleted successfully.');
     }
 }
