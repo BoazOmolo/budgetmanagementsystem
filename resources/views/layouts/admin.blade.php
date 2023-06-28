@@ -6,7 +6,7 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>MY DASHBOARD</title>
+        <title>Budget Management System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
@@ -166,7 +166,6 @@
                 <div data-simplebar class="h-100">
 
                     <!-- User details -->
-                    cd
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
