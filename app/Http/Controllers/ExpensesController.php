@@ -46,11 +46,20 @@ class ExpensesController extends Controller
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');
-        $expense->file = $request->input('file');
+        // $expense->file = $request->input('file');
         $expense->status = 1;
         $expense->createdby = $username;
         $expense->updatedby = "";
         $expense->deletedby = "";
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = $file->getClientOriginalName();
+            $filePath = 'assets/images/brands/' . $fileName;
+            $file->storeAs('public', $filePath);
+            $expense->file = $filePath;
+        }
+
         $expense->save();
 
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');

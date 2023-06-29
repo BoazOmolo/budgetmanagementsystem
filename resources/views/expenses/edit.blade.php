@@ -35,7 +35,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Add Expense Details</h4>
+                            <h4 class="card-title">Update Expense Details</h4>
                             <form action="{{ route('expenses.update', $expense->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')

@@ -10,10 +10,11 @@ class Expense extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'expenses_id',
+        'name',
+        'description',
         'amount',
         'fees',
-        'file_id',
+        'file',
         'status',
         'createdby',
         'updatedby',

@@ -22,14 +22,20 @@
             </div>
 
             
-            <h1>Income Details</h1>
+            <h1>Budget Details</h1>
 
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">Name: {{ $budget->name }}</p>
                     <p class="card-text">Amount: {{ $budget->amount }}</p>
                     <p class="card-text">Expense: {{ $budget->expenses_id ? $budget->expense->name : '' }}</p>
-                    <p class="card-text">File: {{ $budget->file }}</p>
+                    {{-- <p class="card-text">File: {{ $budget->file }}</p> --}}
+                    <p class="card-text">File:</p>
+                    @if ($budget->file)
+                        <img src="{{ asset('storage/' . $budget->file) }}" width="300" height="300" alt="File Image">
+                    @else
+                        <p>N/A</p>
+                    @endif
                 </div>
             </div>
             <div>

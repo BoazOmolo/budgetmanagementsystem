@@ -45,11 +45,19 @@ class BudgetsController extends Controller
         $budget = new Budget();
         $budget->name = $request->input('name');
         $budget->amount = $request->input('amount');
-        $budget->file = $request->input('file');
+        // $budget->file = $request->input('file');
         $budget->status = 1;
         $budget->createdby = $username;
         $budget->updatedby = "";
         $budget->deletedby = "";
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = $file->getClientOriginalName();
+            $filePath = 'assets/images/brands/' . $fileName;
+            $file->storeAs('public', $filePath);
+            $budget->file = $filePath;
+        }
 
         if ($request->has('expenses_id')) {
             $budget->expenses_id = $request->input('expenses_id');
@@ -103,6 +111,7 @@ class BudgetsController extends Controller
         $budget->file = $request->input('file');
         $budget->status = 1;
         $budget->updatedby = $username;
+        
 
         if ($request->hasFile('file')) {
             // Delete the old file if it exists

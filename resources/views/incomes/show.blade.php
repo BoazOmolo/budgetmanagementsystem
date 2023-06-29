@@ -32,7 +32,13 @@
                     <p class="card-text">Income source: {{ $income->source ? $income->source->source : '' }}</p>
                     <p class="card-text">Start date: {{ $income->start_date }}</p>
                     <p class="card-text">End date: {{ $income->end_date }}</p>
-                    <p class="card-text">File: {{ $income->file }}</p>
+                    {{-- <p class="card-text">File: {{ $income->file }}</p> --}}
+                    <p class="card-text">File:</p>
+                    @if ($income->file)
+                        <img src="{{ asset('storage/' . $income->file) }}" width="300" height="300" alt="File Image">
+                    @else
+                        <p>N/A</p>
+                    @endif
                 </div>
             </div>
             <div>

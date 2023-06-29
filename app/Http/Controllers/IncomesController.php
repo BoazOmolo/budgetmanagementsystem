@@ -78,23 +78,20 @@ class IncomesController extends Controller
         $income->period = $request->input('period');
         $income->start_date = $request->input('start_date');
         $income->end_date = $request->input('end_date');
-        $income->file = $request->input('file');
+        // $income->file = $request->input('file');
         $income->status = 1;
         $income->createdby = $username;
         $income->updatedby = "";
         $income->deletedby = "";
 
-        // Check if source is selected
-        // Check if source is selected
-        // if ($request->has('source')) {
-        //     $source = Source::where('source', $request->input('source'))->first();
-
-        //     // Check if source is found
-        //     if ($source) {
-        //         $income->source_id = $source->id;
-        //     }
-        // }
-        // Check if source_id is selected
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = $file->getClientOriginalName();
+            $filePath = 'assets/images/brands/' . $fileName;
+            $file->storeAs('public', $filePath);
+            $income->file = $filePath;
+        }
+        
         if ($request->has('source_id')) {
             $income->source_id = $request->input('source_id');
         }

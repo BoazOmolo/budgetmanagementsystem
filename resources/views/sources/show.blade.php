@@ -22,7 +22,7 @@
             </div>
 
             
-            <h1>Income Details</h1>
+            <h1>Income Source Details</h1>
 
             <div class="card">
                 <div class="card-body">

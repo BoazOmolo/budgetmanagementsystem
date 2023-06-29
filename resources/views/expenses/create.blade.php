@@ -35,8 +35,8 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Add Expense Details</h4>
-                            <form action="{{ route('expenses.store') }}" method="POST">
+                            <h4 class="card-title">Add New Expense Details</h4>
+                            <form action="{{ route('expenses.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">

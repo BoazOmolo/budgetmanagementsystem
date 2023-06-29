@@ -22,7 +22,7 @@
             </div>
 
             
-            <h1>Income Details</h1>
+            <h1>Expense Details</h1>
 
             <div class="card">
                 <div class="card-body">
@@ -30,7 +30,13 @@
                     <p class="card-text">Description: {{ $expense->description }}</p>
                     <p class="card-text">Amount: {{ $expense->amount }}</p>
                     <p class="card-text">Fees: {{ $expense->fees }}</p>
-                    <p class="card-text">File: {{ $expense->file }}</p>
+                    {{-- <p class="card-text">File: {{ $expense->file }}</p> --}}
+                    <p class="card-text">File:</p>
+                    @if ($expense->file)
+                        <img src="{{ asset('storage/' . $expense->file) }}" width="300" height="300" alt="File Image">
+                    @else
+                        <p>N/A</p>
+                    @endif
                 </div>
             </div>
             <div>

@@ -35,7 +35,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Add Location Details</h4>
+                            <h4 class="card-title">Add New Expense Category Details</h4>
                             <form action="{{ route('expensescategories.store') }}" method="POST">
                                 @csrf
 
