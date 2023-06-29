@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <a class="btn btn-primary mb-3" href="{{ route('files.create') }}">Add New File </a>
+            {{-- <a class="btn btn-primary mb-3" href="{{ route('files.create') }}">Add New File </a> --}}
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -44,7 +44,7 @@
                                             <td>{{ $file->file_name }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('files.show', $file->id ) }}">View</a>
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
+                                                {{-- <a class="btn btn-secondary upcube-btn" href="">Edit</a> --}}
                                                 <form action="{{ route('files.destroy', $file->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
