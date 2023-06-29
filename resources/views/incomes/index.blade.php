@@ -50,7 +50,7 @@
                                             <td>{{ $income->amount }}</td>
                                             <td>{{ $income->period }}</td>
                                             {{-- <td>{{ $income->source->source }}</td> --}}
-                                            <td>{{ $income->source ? $income->source->source : '' }}</td>
+                                            <td>{{ $income->source ? $income->source->source : 'N/A' }}</td>
                                             <td>{{ $income->start_date }}</td>
                                             <td>{{ $income->end_date }}</td>
                                             <td>{{ $income->file ? $income->file : 'N/A' }}</td>

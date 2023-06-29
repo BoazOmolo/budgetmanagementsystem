@@ -44,7 +44,7 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $budget->name }}</td>
                                             <td>{{ $budget->amount }}</td>
-                                            <td>{{ $budget->expenses_id ? $budget->expense->name : '' }}</td>
+                                            <td>{{ $budget->expenses_id ? $budget->expense->name : 'N/A' }}</td>
                                             {{-- <td>{{ $budget->name ? $budget->name->name : '' }}</td>
                                             <td>{{ $budget->name ? $budget->expense->name : '' }}</td> --}}
                                             <td>{{ $budget->file ? $budget->file : 'N/A' }}</td>
