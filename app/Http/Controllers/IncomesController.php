@@ -82,6 +82,7 @@ class IncomesController extends Controller
         $income->status = 1;
         $income->createdby = $username;
         $income->updatedby = "";
+        $income->deletedby = "";
 
         // Check if source is selected
         // Check if source is selected
@@ -170,6 +171,8 @@ class IncomesController extends Controller
 
         $income->save();
 
+        unset($income->updated_at);
+
         return redirect()->route('incomes.index')->with('success', 'Income updated successfully.');
     }
 
@@ -182,6 +185,8 @@ class IncomesController extends Controller
      */
     public function destroy($id)
     {
+        $username = Auth::user()->name;
+
         $income = Income::findOrFail($id);
 
         // Delete the file associated with the income if it exists
@@ -189,6 +194,9 @@ class IncomesController extends Controller
             // Assuming you have a storage disk named 'public' configured in your filesystems.php
             Storage::disk('public')->delete($income->file);
         }
+        $income->status = 0;
+        $income->deletedby = $username;
+        $income->save();
 
         $income->delete();
 

@@ -70,5 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/files', [FilesController::class, 'index'])->name('files.index');
     Route::get('/files/create', [FilesController::class, 'create'])->name('files.create');
     Route::post('/files', [FilesController::class, 'store'])->name('files.store');
+    Route::get('/files/{file}', [FilesController::class, 'show'])->name('files.show');
+    Route::delete('/files/{id}', [FilesController::class, 'destroy']) ->name('files.destroy');
 });
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('type_id')->index()->nullable();
             $table->string('type');
+            $table->string('file_name');
             $table->text('status');
             $table->string('createdby');
             $table->string('updatedby');

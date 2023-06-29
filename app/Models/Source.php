@@ -14,6 +14,8 @@ class Source extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = [
         'source',
+        'status',
+        'updated_at'
     ];
 
     public function incomes()

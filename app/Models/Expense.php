@@ -17,6 +17,7 @@ class Expense extends Model
         'status',
         'createdby',
         'updatedby',
+        'updated_at'
     ];
 
     protected $dates = ['deleted_at'];

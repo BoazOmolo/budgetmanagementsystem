@@ -32,7 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>File Type</th>
-                                        <th>File Type ID</th>
+                                        <th>File Type Name</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -41,11 +41,11 @@
                                         <tr>
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $file->type }}</td>
-                                            <td>{{ $file->type_id }}</td>
+                                            <td>{{ $file->file_name }}</td>
                                             <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a>
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('files.show', $file->id ) }}">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <form action="{{ route('files.destroy', $file->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>

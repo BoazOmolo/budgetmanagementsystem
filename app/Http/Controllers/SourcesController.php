@@ -44,6 +44,7 @@ class SourcesController extends Controller
         $source->status = 1;
         $source->createdby = $username;
         $source->updatedby = "";
+        $source->deletedby = "";
         $source->save();
 
         return redirect()->route('sources.index')->with('success', 'Income created successfully.');
@@ -90,6 +91,8 @@ class SourcesController extends Controller
         $source->updatedby = $username;
         $source->save();
 
+        unset($source->updated_at);
+
         return redirect()->route('sources.index')->with('success', 'Income source updated successfully.');
     }
 
@@ -101,8 +104,15 @@ class SourcesController extends Controller
      */
     public function destroy($id)
     {
+        $username = Auth::user()->name;
+
         $source = Source::findOrFail($id);
+        $source->status = 0;
+        $source->deletedby = $username;
+        $source->save();
+
         $source->delete();
+
 
         return redirect()->route('sources.index')->with('success', 'Income source deleted successfully.');
     }

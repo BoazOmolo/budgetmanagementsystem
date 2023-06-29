@@ -20,6 +20,7 @@ class Income extends Model
         'createdby',
         'updatedby',
         'file',
+        'updated_at'
     ];
 
     protected $dates = ['deleted_at'];

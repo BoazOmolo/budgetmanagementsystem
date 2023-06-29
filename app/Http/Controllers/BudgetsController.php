@@ -49,6 +49,7 @@ class BudgetsController extends Controller
         $budget->status = 1;
         $budget->createdby = $username;
         $budget->updatedby = "";
+        $budget->deletedby = "";
 
         if ($request->has('expenses_id')) {
             $budget->expenses_id = $request->input('expenses_id');
@@ -118,6 +119,8 @@ class BudgetsController extends Controller
 
         $budget->save();
 
+        unset($budget->updated_at);
+
         return redirect()->route('budgets.index')->with('success', 'Budget updated successfully.');
     }
 
@@ -129,6 +132,8 @@ class BudgetsController extends Controller
      */
     public function destroy($id)
     {
+        $username = Auth::user()->name;
+
         $budget = Budget::findOrFail($id);
 
         // Delete the file associated with the income if it exists
@@ -136,6 +141,10 @@ class BudgetsController extends Controller
             // Assuming you have a storage disk named 'public' configured in your filesystems.php
             Storage::disk('public')->delete($budget->file);
         }
+
+        $budget->status = 0;
+        $budget->deletedby = $username;
+        $budget->save();
 
         $budget->delete();
 

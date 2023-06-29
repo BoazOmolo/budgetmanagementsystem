@@ -17,26 +17,24 @@ class FilesController extends Controller
         return view('files.index', compact('files'));
     }
 
-    // Rest of the methods...
-
-    public function store(Request $request)
+    public function show($id)
     {
+        $file = File::findOrFail($id);
+        return view('files.show', compact('file'));
+    }
 
-        $username = Auth::user()->name;
-        
-        $file = $request->file('file');
-        $file->store('files');
-        $fileType = $request->input('type');
+    public function destroy($id)
+    {
+        $file = File::findOrFail($id);
 
-        // Insert the file type into the files table
-        $fileEntry = new File();
-        $fileEntry->type = $fileType;
-        $fileEntry->type_id = $file->id;
-        $fileEntry->status = 1; 
-        $fileEntry->createdby = Auth::user()->name;
-        $fileEntry->updatedby = '';
-        $fileEntry->save();
+        // Delete the file associated with the income if it exists
+        if ($file->file) {
+            // Assuming you have a storage disk named 'public' configured in your filesystems.php
+            Storage::disk('public')->delete($file->file);
+        }
 
-        return redirect()->back();
+        $file->delete();
+
+        return redirect()->route('files.index')->with('success', 'File deleted successfully.');
     }
 }

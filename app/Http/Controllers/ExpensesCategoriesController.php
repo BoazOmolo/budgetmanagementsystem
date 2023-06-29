@@ -48,12 +48,15 @@ class ExpensesCategoriesController extends Controller
         $expensescategory->status = 1;
         $expensescategory->createdby = $username;
         $expensescategory->updatedby = "";
+        $expensescategory->deletedby = "";
 
         if ($request->has('expenses_id')) {
             $expensescategory->expenses_id = $request->input('expenses_id');
         }
 
         $expensescategory->save();
+
+        
 
         return redirect()->route('expensescategories.index')->with('success', 'Income created successfully.');
     }
@@ -103,6 +106,8 @@ class ExpensesCategoriesController extends Controller
 
         $expensescategory->save();
 
+        unset($expensescategory->updated_at);
+
         return redirect()->route('expensescategories.index')->with('success', 'Expense Category updated successfully.');
     }
 
@@ -114,7 +119,14 @@ class ExpensesCategoriesController extends Controller
      */
     public function destroy($id)
     {
+        $username = Auth::user()->name;
+
         $expensescategory = ExpensesCategory::findOrFail($id);
+
+        $expensescategory->status = 0;
+        $expensescategory->deletedby = $username;
+        $expensescategory->save();
+
         $expensescategory->delete();
 
         return redirect()->route('expensescategories.index')->with('success', 'Expense Category deleted successfully.');

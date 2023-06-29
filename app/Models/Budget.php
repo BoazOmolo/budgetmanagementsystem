@@ -13,7 +13,8 @@ class Budget extends Model
     protected $fillable = [
         'expenses_id', 
         'file', 
-        'amount'
+        'amount',
+        'updated_at'
     ];
 
     protected $dates = ['deleted_at'];

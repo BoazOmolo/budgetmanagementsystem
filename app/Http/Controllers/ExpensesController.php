@@ -50,6 +50,7 @@ class ExpensesController extends Controller
         $expense->status = 1;
         $expense->createdby = $username;
         $expense->updatedby = "";
+        $expense->deletedby = "";
         $expense->save();
 
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
@@ -114,6 +115,8 @@ class ExpensesController extends Controller
 
         $expense->save();
 
+        unset($expense->updated_at);
+
         return redirect()->route('expenses.index')->with('success', 'Expense updated successfully.');
     }
 
@@ -125,6 +128,8 @@ class ExpensesController extends Controller
      */
     public function destroy($id)
     {
+        $username = Auth::user()->name;
+
         $expense = Expense::findOrFail($id);
 
         // Delete the file associated with the income if it exists
@@ -132,6 +137,10 @@ class ExpensesController extends Controller
             // Assuming you have a storage disk named 'public' configured in your filesystems.php
             Storage::disk('public')->delete($expense->file);
         }
+
+        $expense->status = 0;
+        $expense->deletedby = $username;
+        $expense->save();
 
         $expense->delete();
 
