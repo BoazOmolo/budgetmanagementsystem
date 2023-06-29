@@ -82,10 +82,21 @@
                                         <input class="form-control" value="{{ $income->end_date }}" type="date" name="end_date" id="end_date" required>
                                     </div>
                                 </div>
+                                {{-- <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">File</label>
+                                    <div class="col-sm-10">
+                                        <input value="{{ $income->file }}" type="file" class="form-control" name="file" id="file">
+                                    </div>
+                                </div> --}}
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">File</label>
                                     <div class="col-sm-10">
                                         <input type="file" class="form-control" name="file" id="file">
+                                        @if ($income->file)
+                                            <p>Selected file: {{ $income->file }}</p>
+                                        @else
+                                            <p>No file selected</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div>

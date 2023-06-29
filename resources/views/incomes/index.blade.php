@@ -53,7 +53,7 @@
                                             <td>{{ $income->source ? $income->source->source : '' }}</td>
                                             <td>{{ $income->start_date }}</td>
                                             <td>{{ $income->end_date }}</td>
-                                            <td>{{ $income->file }}</td>
+                                            <td>{{ $income->file ? $income->file : 'N/A' }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('incomes.show', $income->id ) }}">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('incomes.edit', $income->id ) }}">Edit</a>

@@ -49,7 +49,7 @@
                                             <td>{{ $expense->description }}</td>
                                             <td>{{ $expense->amount }}</td>
                                             <td>{{ $expense->fees }}</td>
-                                            <td>{{ $expense->file }}</td>
+                                            <td>{{ $expense->file ? $expense->file : 'N/A' }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('expenses.show', $expense->id ) }}">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('expenses.edit', $expense->id ) }}">Edit</a>
