@@ -45,11 +45,11 @@
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('files.show', $file->id ) }}">View</a>
                                                 {{-- <a class="btn btn-secondary upcube-btn" href="">Edit</a> --}}
-                                                <form action="{{ route('files.destroy', $file->id ) }}" method="POST" class="d-inline">
+                                                {{-- <form action="{{ route('files.destroy', $file->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr> 
                                     @endforeach

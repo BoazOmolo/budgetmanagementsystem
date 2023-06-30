@@ -46,7 +46,6 @@ class BudgetsController extends Controller
         $budget = new Budget();
         $budget->name = $request->input('name');
         $budget->amount = $request->input('amount');
-        // $budget->file = $request->input('file');
         $budget->status = 1;
         $budget->createdby = $username;
         $budget->updatedby = "";
@@ -115,9 +114,7 @@ class BudgetsController extends Controller
         
 
         if ($request->hasFile('file')) {
-            // Delete the old file if it exists
             if ($budget->file) {
-                // Assuming you have a storage disk named 'public' configured in your filesystems.php
                 Storage::disk('public')->delete($budget->file);
             }
 
@@ -145,12 +142,6 @@ class BudgetsController extends Controller
         $username = Auth::user()->name;
 
         $budget = Budget::findOrFail($id);
-
-        // Delete the file associated with the income if it exists
-        if ($budget->file) {
-            // Assuming you have a storage disk named 'public' configured in your filesystems.php
-            Storage::disk('public')->delete($budget->file);
-        }
 
         $budget->status = 0;
         $budget->deletedby = $username;

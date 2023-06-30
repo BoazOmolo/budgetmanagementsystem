@@ -40,35 +40,7 @@ class IncomesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-        // $username = Auth::user()->name;
-        // // $source = Source::find($id);
-        // // $source = Source::where('source_id', $request->input('source'))->first();
-        // $source = Source::where('source', $request->input('source'))->first();
-
-        
-        // if ($source) {
-        //     $income = new Income();
-        //     $income->amount = $request->input('amount');
-        //     $income->period = $request->input('period');
-        //     $income->source_id = $source->id;
-        //     $income->start_date = $request->input('start_date');
-        //     $income->end_date = $request->input('end_date');
-        //     $income->file = $request->input('file');
-        //     $income->status = 1;
-        //     $income->createdby = $username;
-        //     $income->updatedby = "";
-        //     $income->save();
-
-        // } else {
-        //     \Log::error('Source not found');
-        //     return redirect()->back()->with('error', 'Source not found.');
-        // }
-
-        // return redirect()->route('incomes.index')->with('success', 'Income created successfully.');
-        
-    // }
+  
     public function store(Request $request)
     {
         $username = Auth::user()->name;
@@ -79,7 +51,6 @@ class IncomesController extends Controller
         $income->period = $request->input('period');
         $income->start_date = $request->input('start_date');
         $income->end_date = $request->input('end_date');
-        // $income->file = $request->input('file');
         $income->status = 1;
         $income->createdby = $username;
         $income->updatedby = "";
@@ -153,15 +124,11 @@ class IncomesController extends Controller
             $income->source_id = $request->input('source_id');
         }
 
-        // Check if a new file is uploaded
         if ($request->hasFile('file')) {
-            // Delete the old file if it exists
             if ($income->file) {
-                // Assuming you have a storage disk named 'public' configured in your filesystems.php
                 Storage::disk('public')->delete($income->file);
             }
 
-            // Store the new file
             $file = $request->file('file');
             $path = $file->store('income_files', 'public');
             $income->file = $path;
@@ -187,11 +154,6 @@ class IncomesController extends Controller
 
         $income = Income::findOrFail($id);
 
-        // Delete the file associated with the income if it exists
-        if ($income->file) {
-            // Assuming you have a storage disk named 'public' configured in your filesystems.php
-            Storage::disk('public')->delete($income->file);
-        }
         $income->status = 0;
         $income->deletedby = $username;
         $income->save();

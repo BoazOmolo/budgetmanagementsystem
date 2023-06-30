@@ -42,12 +42,10 @@ class ExpensesController extends Controller
         $username = Auth::user()->name;
 
         $expense = new Expense();
-        // $expense->expenses_id = $request->input('expenses_id');
         $expense->name = $request->input('name');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');
-        // $expense->file = $request->input('file');
         $expense->status = 1;
         $expense->createdby = $username;
         $expense->updatedby = "";
@@ -111,9 +109,7 @@ class ExpensesController extends Controller
         $expense->updatedby = $username;
 
         if ($request->hasFile('file')) {
-            // Delete the old file if it exists
             if ($expense->file) {
-                // Assuming you have a storage disk named 'public' configured in your filesystems.php
                 Storage::disk('public')->delete($expense->file);
             }
 
@@ -141,12 +137,6 @@ class ExpensesController extends Controller
         $username = Auth::user()->name;
 
         $expense = Expense::findOrFail($id);
-
-        // Delete the file associated with the income if it exists
-        if ($expense->file) {
-            // Assuming you have a storage disk named 'public' configured in your filesystems.php
-            Storage::disk('public')->delete($expense->file);
-        }
 
         $expense->status = 0;
         $expense->deletedby = $username;

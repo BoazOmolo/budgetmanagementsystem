@@ -25,18 +25,16 @@ class FilesController extends Controller
         return view('files.show', compact('file'));
     }
 
-    public function destroy($id)
-    {
-        $file = File::findOrFail($id);
+    // public function destroy($id)
+    // {
+    //     $file = File::findOrFail($id);
+       
+    //     if ($file->file) {
+    //         Storage::disk('public')->delete($file->file);
+    //     }
 
-        // Delete the file associated with the income if it exists
-        if ($file->file) {
-            // Assuming you have a storage disk named 'public' configured in your filesystems.php
-            Storage::disk('public')->delete($file->file);
-        }
+    //     $file->delete();
 
-        $file->delete();
-
-        return redirect()->route('files.index')->with('success', 'File deleted successfully.');
-    }
+    //     return redirect()->route('files.index')->with('success', 'File deleted successfully.');
+    // }
 }
