@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Models\Income;
 use App\Models\Source;
 
@@ -196,6 +197,11 @@ class IncomesController extends Controller
         $income->save();
 
         $income->delete();
+
+        DB::table('files')
+        ->where('type_id', $id)
+        ->where('type', 'Incomes')
+        ->delete();
 
         return redirect()->route('incomes.index')->with('success', 'Income deleted successfully.');
     }

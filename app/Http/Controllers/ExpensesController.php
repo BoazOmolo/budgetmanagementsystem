@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Models\Expense;
 
 class ExpensesController extends Controller
@@ -152,6 +153,11 @@ class ExpensesController extends Controller
         $expense->save();
 
         $expense->delete();
+
+        DB::table('files')
+        ->where('type_id', $id)
+        ->where('type', 'Expenses')
+        ->delete();
 
         return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }

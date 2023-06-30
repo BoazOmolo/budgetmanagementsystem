@@ -14,31 +14,46 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared('
-        CREATE TRIGGER insert_file_trigger_budgets AFTER INSERT ON budgets FOR EACH ROW
-        BEGIN
-            DECLARE file_name VARCHAR(255);
-            SELECT name INTO file_name FROM budgets WHERE id = NEW.id;
-            INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Budgets", file_name, "1", NEW.createdby, "", NOW(), NOW());
-        END;
+        DB::unprepared('        
+            CREATE TRIGGER insert_file_trigger_budgets AFTER INSERT ON budgets FOR EACH ROW
+            BEGIN
+                DECLARE file_name VARCHAR(255);
+                SELECT name INTO file_name FROM budgets WHERE id = NEW.id;
+                INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
+                VALUES (NEW.id, "Budgets", file_name, "1", NEW.createdby, "", NOW(), NOW());
+            END;
 
-        CREATE TRIGGER insert_file_trigger_expenses AFTER INSERT ON expenses FOR EACH ROW
-        BEGIN
-            DECLARE file_name VARCHAR(255);
-            SELECT name INTO file_name FROM expenses WHERE id = NEW.id;
-            INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Expenses", file_name, "1", NEW.createdby, "", NOW(), NOW());
-        END;
+            CREATE TRIGGER delete_file_trigger_budgets AFTER DELETE ON budgets FOR EACH ROW
+            BEGIN
+                DELETE FROM files WHERE type_id = OLD.id AND type = "Budgets";
+            END;
 
-        CREATE TRIGGER insert_file_trigger_incomes AFTER INSERT ON incomes FOR EACH ROW
-        BEGIN
-            DECLARE file_name VARCHAR(255);
-            SELECT name INTO file_name FROM incomes WHERE id = NEW.id;
-            INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
-            VALUES (NEW.id, "Incomes", file_name, "1", NEW.createdby, "", NOW(), NOW());
-        END;
-    ');
+            CREATE TRIGGER insert_file_trigger_expenses AFTER INSERT ON expenses FOR EACH ROW
+            BEGIN
+                DECLARE file_name VARCHAR(255);
+                SELECT name INTO file_name FROM expenses WHERE id = NEW.id;
+                INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
+                VALUES (NEW.id, "Expenses", file_name, "1", NEW.createdby, "", NOW(), NOW());
+            END;
+
+            CREATE TRIGGER delete_file_trigger_expenses AFTER DELETE ON expenses FOR EACH ROW
+            BEGIN
+                DELETE FROM files WHERE type_id = OLD.id AND type = "Expenses";
+            END;
+
+            CREATE TRIGGER insert_file_trigger_incomes AFTER INSERT ON incomes FOR EACH ROW
+            BEGIN
+                DECLARE file_name VARCHAR(255);
+                SELECT name INTO file_name FROM incomes WHERE id = NEW.id;
+                INSERT INTO files (type_id, type, file_name, status, createdby, updatedby, created_at, updated_at)
+                VALUES (NEW.id, "Incomes", file_name, "1", NEW.createdby, "", NOW(), NOW());
+            END;
+
+            CREATE TRIGGER delete_file_trigger_incomes AFTER DELETE ON incomes FOR EACH ROW
+            BEGIN
+                DELETE FROM files WHERE type_id = OLD.id AND type = "Incomes";
+            END;
+        ');
     }
 
     /**
@@ -49,7 +64,10 @@ return new class extends Migration
     public function down()
     {
         DB::unprepared('DROP TRIGGER IF EXISTS insert_file_trigger_budgets');
+        DB::unprepared('DROP TRIGGER IF EXISTS delete_file_trigger_budgets');
         DB::unprepared('DROP TRIGGER IF EXISTS insert_file_trigger_expenses');
+        DB::unprepared('DROP TRIGGER IF EXISTS delete_file_trigger_expenses');
         DB::unprepared('DROP TRIGGER IF EXISTS insert_file_trigger_incomes');
+        DB::unprepared('DROP TRIGGER IF EXISTS delete_file_trigger_incomes');
     }
 };
