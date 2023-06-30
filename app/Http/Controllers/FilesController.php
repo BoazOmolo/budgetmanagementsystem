@@ -12,9 +12,11 @@ class FilesController extends Controller
     public function index()
     {
         // Retrieve files from the files table
-        $files = File::all();
-
+        // $files = File::all();
+        $files = File::where('status', 1)->get();
         return view('files.index', compact('files'));
+
+        // return view('files.index', compact('files'));
     }
 
     public function show($id)

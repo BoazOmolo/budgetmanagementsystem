@@ -161,7 +161,7 @@ class BudgetsController extends Controller
         DB::table('files')
             ->where('type_id', $id)
             ->where('type', 'Budgets')
-            ->delete();
+            ->update(['status' => 0]);
 
         return redirect()->route('budgets.index')->with('success', 'Budget deleted successfully.');
     }

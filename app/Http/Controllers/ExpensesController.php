@@ -157,7 +157,7 @@ class ExpensesController extends Controller
         DB::table('files')
         ->where('type_id', $id)
         ->where('type', 'Expenses')
-        ->delete();
+        ->update(['status' => 0]);
 
         return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }

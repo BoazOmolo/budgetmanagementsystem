@@ -201,7 +201,7 @@ class IncomesController extends Controller
         DB::table('files')
         ->where('type_id', $id)
         ->where('type', 'Incomes')
-        ->delete();
+        ->update(['status' => 0]);
 
         return redirect()->route('incomes.index')->with('success', 'Income deleted successfully.');
     }
