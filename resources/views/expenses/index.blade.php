@@ -31,7 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        {{-- <th>Expense ID</th> --}}
+                                        <th>Expense</th>
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Amount</th>
@@ -44,7 +44,13 @@
                                     @foreach($expenses as $index => $expense)
                                         <tr>
                                             <td>{{ $index +=1}}</td>
-                                            {{-- <td>{{ $expense->expenses_id }}</td> --}}
+                                            <td>
+                                                @if ($expense->parent)
+                                                    {{ $expense->parent->name }}
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
                                             <td>{{ $expense->name }}</td>
                                             <td>{{ $expense->description }}</td>
                                             <td>{{ $expense->amount }}</td>

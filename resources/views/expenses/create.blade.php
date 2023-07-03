@@ -45,7 +45,15 @@
                                         <input class="form-control" type="text" name="name" id="name" required>
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="parent_id">Select Expense :</label>
+                                    <select id="parent_id" name="parent_id" class="form-control">
+                                        <option value="">Select an expense</option>
+                                        @foreach($expenses as $expenseId => $expenseName)
+                                            <option @if($expenseId == $parent_id) selected="" @endif value="{{ $expenseId }}">{{ $expenseName }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="mb-3">
                                     <label>Description</label>
                                     <div>

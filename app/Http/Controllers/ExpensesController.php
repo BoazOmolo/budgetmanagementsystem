@@ -26,9 +26,13 @@ class ExpensesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create(Request $request)
     {
-        return view('expenses.create');
+        $parent_id = $request->query("parent_id");
+        $expenses = Expense::pluck('name', 'id');
+
+        return view('expenses.create',compact('expenses'))->with(['parent_id' => $parent_id ?? null]);
     }
 
     /**
@@ -39,9 +43,16 @@ class ExpensesController extends Controller
      */
     public function store(Request $request)
     {
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'status' => 'required|in:completed,incomplete',
+        //     'parent_id' => 'nullable|exists:locations,id'
+        // ]);
+
         $username = Auth::user()->name;
 
         $expense = new Expense();
+        $expense->parent_id = $request->input('parent_id');
         $expense->name = $request->input('name');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
@@ -82,10 +93,12 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $expense = Expense::findOrFail($id);
-        return view('expenses.edit', compact('expense'));
+        $parent_id = $request->query("parent_id");
+        $expenses = Expense::pluck('name', 'id');
+        return view('expenses.edit', compact('expense', 'expenses', 'parent_id'));
     }
 
     /**
@@ -100,6 +113,7 @@ class ExpensesController extends Controller
         $username = Auth::user()->name;
 
         $expense = Expense::findOrFail($id);
+        $expense->parent_id = $request->input('parent_id');
         $expense->name = $request->input('name');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');

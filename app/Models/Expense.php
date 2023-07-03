@@ -11,6 +11,7 @@ class Expense extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'name',
+        'parent_id',
         'description',
         'amount',
         'fees',
@@ -22,4 +23,14 @@ class Expense extends Model
     ];
 
     protected $dates = ['deleted_at'];
+    public function parent()
+    {
+        return $this->belongsTo(Expense::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Expense::class, 'parent_id');
+
+    }
 }

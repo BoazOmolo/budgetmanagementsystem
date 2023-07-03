@@ -39,6 +39,15 @@
                             <form action="{{ route('expenses.update', $expense->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
+                                <div class="form-group">
+                                    <label for="parent_id">Select Expense:</label>
+                                    <select id="parent_id" name="parent_id" class="form-control">
+                                        <option value="" @if(!$expense->parent) selected @endif>Select an expense</option>
+                                        @foreach($expenses as $expenseId => $expenseName)
+                                            <option value="{{ $expenseId }}" @if($expense->parent && $expense->parent->id == $expenseId) selected @endif>{{ $expenseName }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
