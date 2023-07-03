@@ -134,19 +134,25 @@ class ExpensesController extends Controller
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');
-        $expense->file = $request->input('file');
+        // $expense->file = $request->input('file');
         $expense->status = 1;
         $expense->updatedby = $username;
 
         if ($request->hasFile('file')) {
-            if ($expense->file) {
-                Storage::disk('public')->delete($expense->file);
-            }
-
-            // Store the new file
             $file = $request->file('file');
-            $path = $file->store('expense_files', 'public');
-            $expense->file = $path;
+            $extension = $file->getClientOriginalExtension();
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                if ($expense->file) {
+                    Storage::disk('public')->delete($expense->file);
+                }
+             
+                $path = $file->store('expense_files', 'public');
+                $expense->file = $path;
+            } else {
+                return redirect()->back()->with('error', 'Only image files are allowed.')->withInput();;
+            }
         }
 
         $expense->save();
