@@ -56,21 +56,13 @@ class IncomesController extends Controller
         $income->updatedby = "";
         $income->deletedby = "";
 
-        // if ($request->hasFile('file')) {
-        //     $file = $request->file('file');
-        //     $fileName = $file->getClientOriginalName();
-        //     $filePath = 'assets/images/brands/' . $fileName;
-        //     $file->storeAs('public', $filePath);
-        //     $income->file = $filePath;
-        // }
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         
-            // Check if the file extension is allowed
             $fileExtension = strtolower($file->getClientOriginalExtension());
             if (!in_array($fileExtension, $allowedExtensions)) {
-                return redirect()->back()->with('error', 'Only image files are allowed.');
+                return redirect()->back()->with('error', 'Only image files are allowed.')->withInput();
             }
         
             $fileName = $file->getClientOriginalName();
@@ -78,8 +70,7 @@ class IncomesController extends Controller
             $file->storeAs('public', $filePath);
             $income->file = $filePath;
         }
-        
-        
+         
         if ($request->has('source_id')) {
             $income->source_id = $request->input('source_id');
         }
@@ -136,18 +127,34 @@ class IncomesController extends Controller
         $income->updatedby = $username;
 
 
-        if ($request->has('source_id')) {
-            $income->source_id = $request->input('source_id');
-        }
+        // if ($request->has('source_id')) {
+        //     $income->source_id = $request->input('source_id');
+        // }
 
+        // if ($request->hasFile('file')) {
+        //     if ($income->file) {
+        //         Storage::disk('public')->delete($income->file);
+        //     }
+
+        //     $file = $request->file('file');
+        //     $path = $file->store('income_files', 'public');
+        //     $income->file = $path;
+        // }
         if ($request->hasFile('file')) {
-            if ($income->file) {
-                Storage::disk('public')->delete($income->file);
-            }
-
             $file = $request->file('file');
-            $path = $file->store('income_files', 'public');
-            $income->file = $path;
+            $extension = $file->getClientOriginalExtension();
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                if ($income->file) {
+                    Storage::disk('public')->delete($income->file);
+                }
+        
+                $path = $file->store('income_files', 'public');
+                $income->file = $path;
+            } else {
+                return redirect()->back()->with('error', 'Only image files are allowed.')->withInput();
+            }
         }
 
         $income->save();

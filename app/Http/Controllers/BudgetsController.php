@@ -51,22 +51,14 @@ class BudgetsController extends Controller
         $budget->updatedby = "";
         $budget->deletedby = "";
 
-        // if ($request->hasFile('file')) {
-        //     $file = $request->file('file');
-        //     $fileName = $file->getClientOriginalName();
-        //     $filePath = 'assets/images/brands/' . $fileName;
-        //     $file->storeAs('public', $filePath);
-        //     $budget->file = $filePath;
-        // }
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         
-            // Check if the file extension is allowed
             $fileExtension = strtolower($file->getClientOriginalExtension());
             if (!in_array($fileExtension, $allowedExtensions)) {
-                return redirect()->back()->with('error', 'Only image files are allowed.');
+                return redirect()->back()->with('error', 'Only image files are allowed.')->withInput();
             }
         
             $fileName = $file->getClientOriginalName();
@@ -130,14 +122,20 @@ class BudgetsController extends Controller
         
 
         if ($request->hasFile('file')) {
-            if ($budget->file) {
-                Storage::disk('public')->delete($budget->file);
-            }
-
-            // Store the new file
             $file = $request->file('file');
-            $path = $file->store('budget_files', 'public');
-            $budget->file = $path;
+            $extension = $file->getClientOriginalExtension();
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                if ($budget->file) {
+                    Storage::disk('public')->delete($budget->file);
+                }
+             
+                $path = $file->store('budget_files', 'public');
+                $budget->file = $path;
+            } else {
+                return redirect()->back()->with('error', 'Only image files are allowed.')->withInput();;
+            }
         }
 
         $budget->save();

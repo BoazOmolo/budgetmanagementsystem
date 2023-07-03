@@ -26,13 +26,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            @if ($errors->any())
+                            @if(session()->has('error'))
                                 <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+
+                            @if(session()->has('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
                                 </div>
                             @endif
                             <h4 class="card-title">Update Budget Details</h4>
@@ -66,10 +68,21 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">File</label>
                                     <div class="input-group">
                                         <input type="file" class="form-control" name="file" id="file">
+                                    </div>
+                                </div> --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">File</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="file" id="file">
+                                        @if ($budget->file)
+                                            <p>Selected file: {{ $budget->file }}</p>
+                                        @else
+                                            <p>No file selected</p>
+                                        @endif
                                     </div>
                                 </div>
 

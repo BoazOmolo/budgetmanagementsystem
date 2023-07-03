@@ -23,12 +23,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            @if(session('error'))
+                            @if(session()->has('error'))
                                 <div class="alert alert-danger">
                                     {{ session('error') }}
                                 </div>
                             @endif
-                            @if(session('success'))
+
+                            @if(session()->has('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
