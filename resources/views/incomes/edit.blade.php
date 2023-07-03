@@ -23,13 +23,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            @if ($errors->any())
+                            @if(session('error'))
                                 <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
                                 </div>
                             @endif
                             <h4 class="card-title">Update Income Details</h4>

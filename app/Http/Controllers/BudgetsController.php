@@ -51,8 +51,24 @@ class BudgetsController extends Controller
         $budget->updatedby = "";
         $budget->deletedby = "";
 
+        // if ($request->hasFile('file')) {
+        //     $file = $request->file('file');
+        //     $fileName = $file->getClientOriginalName();
+        //     $filePath = 'assets/images/brands/' . $fileName;
+        //     $file->storeAs('public', $filePath);
+        //     $budget->file = $filePath;
+        // }
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        
+            // Check if the file extension is allowed
+            $fileExtension = strtolower($file->getClientOriginalExtension());
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                return redirect()->back()->with('error', 'Only image files are allowed.');
+            }
+        
             $fileName = $file->getClientOriginalName();
             $filePath = 'assets/images/brands/' . $fileName;
             $file->storeAs('public', $filePath);

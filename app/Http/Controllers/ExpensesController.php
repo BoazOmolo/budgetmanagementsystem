@@ -62,8 +62,24 @@ class ExpensesController extends Controller
         $expense->updatedby = "";
         $expense->deletedby = "";
 
+        // if ($request->hasFile('file')) {
+        //     $file = $request->file('file');
+        //     $fileName = $file->getClientOriginalName();
+        //     $filePath = 'assets/images/brands/' . $fileName;
+        //     $file->storeAs('public', $filePath);
+        //     $expense->file = $filePath;
+        // }
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        
+            // Check if the file extension is allowed
+            $fileExtension = strtolower($file->getClientOriginalExtension());
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                return redirect()->back()->with('error', 'Only image files are allowed.');
+            }
+        
             $fileName = $file->getClientOriginalName();
             $filePath = 'assets/images/brands/' . $fileName;
             $file->storeAs('public', $filePath);
