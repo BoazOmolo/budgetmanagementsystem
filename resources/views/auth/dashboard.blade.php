@@ -31,7 +31,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-truncate font-size-14 mb-2">Budgets</p>
-                                    <h4 class="mb-2">{{ $totalbudgets}}</h4>
+                                    <h4 class="mb-2">{{ isset($totalbudgets) ? $totalbudgets : '' }}</h4>
                                     <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"></p>
                                 </div>
                                 <div class="avatar-sm">
@@ -49,7 +49,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-truncate font-size-14 mb-2">Expenses</p>
-                                    <h4 class="mb-2">{{ $totalexpenses}}</h4>
+                                    <h4 class="mb-2">{{ isset($totalexpenses) ? $totalexpenses : '' }}</h4>
                                     <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"></p>
                                 </div>
                                 <div class="avatar-sm">
@@ -67,7 +67,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-truncate font-size-14 mb-2">Incomes</p>
-                                    <h4 class="mb-2">{{ $totalincomes}}</h4>
+                                    <h4 class="mb-2">{{ isset($totalincomes) ? $totalincomes : '' }}</h4>
                                     <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"></p>
                                 </div>
                                 <div class="avatar-sm">
