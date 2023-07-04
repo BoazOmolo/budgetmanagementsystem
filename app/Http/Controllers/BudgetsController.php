@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\Budget;
 use App\Models\Expense;
 
@@ -73,6 +74,7 @@ class BudgetsController extends Controller
 
         $budget->save();
 
+        Session::flash('successcode','success');
         return redirect()->route('budgets.index')->with('success', 'Income created successfully.');
     }
 
@@ -142,6 +144,7 @@ class BudgetsController extends Controller
 
         unset($budget->updated_at);
 
+        Session::flash('successcode','success');
         return redirect()->route('budgets.index')->with('success', 'Budget updated successfully.');
     }
 
@@ -168,6 +171,7 @@ class BudgetsController extends Controller
             ->where('type', 'Budgets')
             ->update(['status' => 0]);
 
+        Session::flash('successcode','warning');
         return redirect()->route('budgets.index')->with('success', 'Budget deleted successfully.');
     }
 }

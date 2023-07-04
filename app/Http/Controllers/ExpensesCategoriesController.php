@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\ExpensesCategory;
 use App\Models\Expense;
 
@@ -57,8 +58,8 @@ class ExpensesCategoriesController extends Controller
         $expensescategory->save();
 
         
-
-        return redirect()->route('expensescategories.index')->with('success', 'Income created successfully.');
+        Session::flash('successcode','success');
+        return redirect()->route('expensescategories.index')->with('success', 'Expense Category created successfully.');
     }
 
     /**
@@ -108,6 +109,7 @@ class ExpensesCategoriesController extends Controller
 
         unset($expensescategory->updated_at);
 
+        Session::flash('successcode','success');
         return redirect()->route('expensescategories.index')->with('success', 'Expense Category updated successfully.');
     }
 
@@ -129,6 +131,7 @@ class ExpensesCategoriesController extends Controller
 
         $expensescategory->delete();
 
+        Session::flash('successcode','warning');
         return redirect()->route('expensescategories.index')->with('success', 'Expense Category deleted successfully.');
     }
 }

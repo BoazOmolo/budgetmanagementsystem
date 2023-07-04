@@ -27,25 +27,17 @@
                     <div class="card">
                         <div class="card-body">
                             {{-- @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif --}}
+                            @if (Session::has('file_error'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('file_error') }}
+                            </div> --}}
                             @if(session()->has('error'))
                                 <div class="alert alert-danger">
                                     {{ session('error') }}
                                 </div>
                             @endif
-
-                            @if(session()->has('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                        
+                           
                             <h4 class="card-title">Add New Budget Details</h4>
                             <form action="{{ route('budgets.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf

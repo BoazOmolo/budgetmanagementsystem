@@ -28,12 +28,6 @@
                                     {{ session('error') }}
                                 </div>
                             @endif
-
-                            @if(session()->has('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
                             <h4 class="card-title">Update Income Details</h4>
                             <form action="{{ route('incomes.update', $income->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf

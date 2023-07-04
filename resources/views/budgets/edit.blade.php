@@ -32,11 +32,7 @@
                                 </div>
                             @endif
 
-                            @if(session()->has('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                           
                             <h4 class="card-title">Update Budget Details</h4>
                             <form action="{{ route('budgets.update', $budget->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf

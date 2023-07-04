@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\Income;
 use App\Models\Source;
 
@@ -77,6 +78,7 @@ class IncomesController extends Controller
 
         $income->save();
 
+        Session::flash('successcode','success');
         return redirect()->route('incomes.index')->with('success', 'Income created successfully.');
     }
 
@@ -161,6 +163,7 @@ class IncomesController extends Controller
 
         unset($income->updated_at);
 
+        Session::flash('successcode','success');
         return redirect()->route('incomes.index')->with('success', 'Income updated successfully.');
     }
 
@@ -188,6 +191,7 @@ class IncomesController extends Controller
         ->where('type', 'Incomes')
         ->update(['status' => 0]);
 
+        Session::flash('successcode','warning');
         return redirect()->route('incomes.index')->with('success', 'Income deleted successfully.');
     }
 }

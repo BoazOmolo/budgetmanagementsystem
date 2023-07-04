@@ -303,6 +303,7 @@
 
         <!-- Datatable init js -->
         <script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
+        
 
         <!-- apexcharts -->
         <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
@@ -331,6 +332,24 @@
         <script src="{{ asset('assets/libs/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 
         <script src="{{ asset('assets/js/pages/form-element.init.js')}}"></script>
+
+        {{-- Sweet alert js --}}
+        <script src="{{ asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+        <script>
+            // @if(session('error'))
+            //     <div class="alert alert-danger">
+            //         {{ session('error') }}
+            //     </div>
+            // @endif
+
+            @if(session('success'))
+                swal({
+                    title: '{{ session('success') }}',
+                    icon: '{{ session('successcode') }}',
+                    button: "OK",
+                });
+            @endif
+        </script>
 
        
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Source;
+// use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 
 class SourcesController extends Controller
 {
@@ -47,6 +49,7 @@ class SourcesController extends Controller
         $source->deletedby = "";
         $source->save();
 
+        Session::flash('successcode','success');
         return redirect()->route('sources.index')->with('success', 'Income created successfully.');
     }
 
@@ -93,6 +96,7 @@ class SourcesController extends Controller
 
         unset($source->updated_at);
 
+        Session::flash('successcode','success');
         return redirect()->route('sources.index')->with('success', 'Income source updated successfully.');
     }
 
@@ -113,7 +117,7 @@ class SourcesController extends Controller
 
         $source->delete();
 
-
+        Session::flash('successcode','warning');
         return redirect()->route('sources.index')->with('success', 'Income source deleted successfully.');
     }
 }

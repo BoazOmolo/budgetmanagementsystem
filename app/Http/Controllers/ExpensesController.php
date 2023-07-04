@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\Expense;
 
 class ExpensesController extends Controller
@@ -88,6 +89,7 @@ class ExpensesController extends Controller
 
         $expense->save();
 
+        Session::flash('successcode','success');
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
     }
 
@@ -159,6 +161,7 @@ class ExpensesController extends Controller
 
         unset($expense->updated_at);
 
+        Session::flash('successcode','success');
         return redirect()->route('expenses.index')->with('success', 'Expense updated successfully.');
     }
 
@@ -185,6 +188,7 @@ class ExpensesController extends Controller
         ->where('type', 'Expenses')
         ->update(['status' => 0]);
 
+        Session::flash('successcode','warning');
         return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }
 }

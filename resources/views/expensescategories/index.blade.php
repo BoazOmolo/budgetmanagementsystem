@@ -43,7 +43,8 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $expensescategory->name }}</td>
                                             <td>{{ $expensescategory->description }}</td>
-                                            <td>{{ $expensescategory->expenses_id ? $expensescategory->expense->name : '' }}</td>
+                                            {{-- <td>{{ $expensescategory->expenses_id ? $expensescategory->expense->name : '' }}</td> --}}
+                                            <td>{{ $expensescategory->expenses_id ? ($expensescategory->expense ? $expensescategory->expense->name : 'N/A') : 'N/A' }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('expensescategories.show', $expensescategory->id ) }}">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('expensescategories.edit', $expensescategory->id ) }}">Edit</a>
