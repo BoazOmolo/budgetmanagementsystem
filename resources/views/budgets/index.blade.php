@@ -44,7 +44,8 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $budget->name }}</td>
                                             <td>{{ $budget->amount }}</td>
-                                            <td>{{ $budget->expense ? $budget->expense->name : 'N/A' }}</td>
+                                            {{-- <td>{{ $budget->expenses_id ? $budget->expense->name : 'N/A' }}</td> --}}
+                                            <td>{{ $budget->expenses_id ? ($budget->expense ? $budget->expense->name : 'N/A') : 'N/A' }}</td>
                                             <td>{{ $budget->file ? $budget->file : 'N/A' }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('budgets.show', $budget->id ) }}">View</a>
