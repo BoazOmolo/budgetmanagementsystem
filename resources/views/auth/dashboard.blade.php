@@ -116,38 +116,6 @@
                                 </div>
                             </form>
                         </div>
-                
-                        {{-- <div class="card-body">
-                            <h5 class="card-title">Budgets</h5>
-                            <div class="row"> --}}
-                                {{-- @foreach($budgets as $budget)
-                                    <div class="col-md-3"> --}}
-                                        <?php
-                                        // $carbonDate = \Carbon\Carbon::create($budget->year, $budget->month, 1);
-                                        // $monthName = $carbonDate->format('F');
-                                        ?>
-                                        {{-- <p>{{ $monthName }}: Ksh{{ $budget->total }}</p> --}}
-                                        {{-- <p>{{ $monthName }} {{ $budget->year }}: Ksh{{ $budget->total }}</p> --}}
-                                    {{-- </div>
-                                @endforeach
-                            </div>
-                        </div>  --}}
-                
-                        {{-- <div class="card-body">
-                            <h5 class="card-title">Expenses</h5>
-                            <div class="row">
-                                @foreach($expenses as $expense)
-                                    <div class="col-md-3">
-                                        <?php
-                                        // $carbonDate = \Carbon\Carbon::create($expense->year, $expense->month, 1);
-                                        // $monthName = $carbonDate->format('F');
-                                        ?>
-                                        {{-- <p>{{ $monthName }}: Ksh{{ $expense->total }}</p> --}}
-                                        {{-- <p>{{ $monthName }} {{ $expense->year }}: Ksh{{ $expense->total }}</p>
-                                    </div>
-                                @endforeach
-                            </div> --}}
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="row">
@@ -222,7 +190,8 @@
                                             <tr>
                                                 {{-- <th>Name</th> --}}
                                                 <th>Amount</th>
-                                                <th>Period</th>   
+                                                <th>Period</th> 
+                                                <th>Profit/Loss</th>   
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -238,6 +207,18 @@
                                                             ?>
                                                             
                                                             <p>{{ $monthName }} {{ $expense->year }}</p>
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $difference = $expense->total - $budget->total;
+                                                            @endphp
+                                                            @if ($difference > 0)
+                                                                <span class="text-success">+Ksh {{ $difference }}</span>
+                                                            @elseif ($difference < 0)
+                                                                <span class="text-danger">Ksh {{ $difference }}</span>
+                                                            @else
+                                                                <span class="text-muted">No difference</span>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
