@@ -214,7 +214,7 @@
                                                                 $difference = $matchingBudget ? $matchingBudget->total - $expense->total : 0;
                                                             @endphp
                                                             @if ($difference > 0)
-                                                                <span class="text-success">+Ksh {{ $difference }}</span>
+                                                                <span class="text-success">Ksh +{{ $difference }}</span>
                                                             @elseif ($difference < 0)
                                                                 <span class="text-danger">Ksh {{ $difference }}</span>
                                                             @else
