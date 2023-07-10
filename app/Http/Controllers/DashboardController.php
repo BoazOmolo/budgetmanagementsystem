@@ -21,12 +21,12 @@ class DashboardController extends Controller
         
         $budgetsQuery = Budget::selectRaw('YEAR(date) as year, MONTH(date) as month, SUM(amount) as total')
             ->groupBy('year', 'month')
-            ->orderBy('year', 'asc')
+            ->orderBy('year', 'desc')
             ->orderBy('month', 'asc');
         
         $expensesQuery = Expense::selectRaw('YEAR(date) as year, MONTH(date) as month, SUM(amount) as total')
             ->groupBy('year', 'month')
-            ->orderBy('year', 'asc')
+            ->orderBy('year', 'desc')
             ->orderBy('month', 'asc');
     
         if ($selectedMonth) {
