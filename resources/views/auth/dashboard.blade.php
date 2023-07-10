@@ -210,7 +210,8 @@
                                                         </td>
                                                         <td>
                                                             @php
-                                                                $difference = $expense->total - $budget->total;
+                                                                $matchingBudget = $budgets->where('year', $expense->year)->where('month', $expense->month)->first();
+                                                                $difference = $matchingBudget ? $matchingBudget->total - $expense->total : 0;
                                                             @endphp
                                                             @if ($difference > 0)
                                                                 <span class="text-success">+Ksh {{ $difference }}</span>
@@ -222,6 +223,7 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
+
                                             </tbody>
                                         </tbody>
                                     </table>
