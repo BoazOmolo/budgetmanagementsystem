@@ -171,7 +171,7 @@
                                             <tr>
                                                 {{-- <th>Name</th> --}}
                                                 <th>Amount</th>
-                                                <th>Date</th>   
+                                                <th>Period</th>   
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -222,7 +222,7 @@
                                             <tr>
                                                 {{-- <th>Name</th> --}}
                                                 <th>Amount</th>
-                                                <th>Date</th>   
+                                                <th>Period</th>   
                                             </tr>
                                         </thead>
                                         <tbody>
