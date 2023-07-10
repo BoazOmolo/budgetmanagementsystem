@@ -9,11 +9,38 @@ use App\Models\Income;
 
 class DashboardController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+        // $budgetsname = Budget::with('budgets')->get();
+
         $totalbudgets = Budget::sum('amount');
         $totalincomes = Income::sum('amount');
         $totalexpenses = Expense::sum('amount');
-        return view('/auth/dashboard', compact('totalbudgets','totalexpenses','totalincomes'));
+    
+        $selectedMonth = $request->input('month');
+        
+        $budgetsQuery = Budget::selectRaw('YEAR(date) as year, MONTH(date) as month, SUM(amount) as total')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc');
+        
+        $expensesQuery = Expense::selectRaw('YEAR(date) as year, MONTH(date) as month, SUM(amount) as total')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc');
+    
+        if ($selectedMonth) {
+            $monthNumber = date('m', strtotime($selectedMonth));
+            $budgetsQuery->whereMonth('date', $monthNumber);
+            $expensesQuery->whereMonth('date', $monthNumber);
+        }
+    
+        $budgets = $budgetsQuery->get();
+        $expenses = $expensesQuery->get();
+    
+        return view('/auth/dashboard', compact('totalbudgets','totalexpenses','totalincomes','budgets', 'expenses', 'selectedMonth',));
     }
+    
+
+   
 }

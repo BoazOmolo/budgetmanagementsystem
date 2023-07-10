@@ -72,7 +72,12 @@
                                         <input type="file" class="form-control" name="file" id="file">
                                     </div>
                                 </div>
-
+                                <div class="row mb-3">
+                                    <label for="start_date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" name="date" id="date" required>
+                                    </div>
+                                </div>
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>

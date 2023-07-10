@@ -36,6 +36,7 @@
                     @else
                         <p>N/A</p>
                     @endif
+                    <p class="card-text">Date: {{ $budget->date }}</p>
                 </div>
             </div>
             <div>

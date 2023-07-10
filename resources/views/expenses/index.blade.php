@@ -33,6 +33,7 @@
                                         <th>#</th>
                                         <th>Expense</th>
                                         <th>Name</th>
+                                        <th>Date</th>
                                         <th>Description</th>
                                         <th>Amount</th>
                                         <th>Fees</th>
@@ -52,6 +53,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ $expense->name }}</td>
+                                            <td>{{ $expense->date }}</td>
                                             <td>{{ $expense->description }}</td>
                                             <td>{{ $expense->amount }}</td>
                                             <td>{{ $expense->fees }}</td>

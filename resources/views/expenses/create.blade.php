@@ -50,6 +50,13 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
+                                <div class="row mb-3">
+                                    <label for="start_date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" name="date" id="date" required>
+                                    </div>
+                                </div>
                                 <div class="mb-3">
                                     <label>Description</label>
                                     <div>

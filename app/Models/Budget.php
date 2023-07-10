@@ -11,6 +11,7 @@ class Budget extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+        'name',
         'expenses_id', 
         'file', 
         'amount',

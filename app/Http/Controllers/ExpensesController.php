@@ -55,6 +55,7 @@ class ExpensesController extends Controller
         $expense = new Expense();
         $expense->parent_id = $request->input('parent_id');
         $expense->name = $request->input('name');
+        $expense->date = $request->input('date');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');
@@ -133,6 +134,7 @@ class ExpensesController extends Controller
         $expense = Expense::findOrFail($id);
         $expense->parent_id = $request->input('parent_id');
         $expense->name = $request->input('name');
+        $expense->date = $request->input('date');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
         $expense->fees = $request->input('fees');

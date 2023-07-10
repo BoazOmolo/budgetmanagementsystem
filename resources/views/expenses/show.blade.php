@@ -28,6 +28,7 @@
                 <div class="card-body">
                     <p class="card-text">Expense: {{ $expense->parent ? $expense->parent->name : 'N/A' }}</p>
                     <p class="card-text">Name: {{ $expense->name }}</p>
+                    <p class="card-text">Date: {{ $expense->date }}</p>
                     <p class="card-text">Description: {{ $expense->description }}</p>
                     <p class="card-text">Amount: {{ $expense->amount }}</p>
                     <p class="card-text">Fees: {{ $expense->fees }}</p>
