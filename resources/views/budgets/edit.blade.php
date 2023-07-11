@@ -70,25 +70,15 @@
                                         <input type="file" class="form-control" name="file" id="file">
                                     </div>
                                 </div> --}}
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">File</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control" name="file" id="file">
-                                        @if ($budget->file)
-                                            <p>Selected file: {{ $budget->file }}</p>
-                                        @else
-                                            <p>No file selected</p>
-                                        @endif
-                                    </div>
-                                </div>
+                                
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Select Period</label>
                                     <div class="col-sm-10">
                                         <select name="period" id="period" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Period</option>
-                                            <option value="weekly" {{ $income->period === 'weekly' ? 'selected' : '' }}>Weekly</option>
-                                            <option value="monthly" {{ $income->period === 'monthly' ? 'selected' : '' }}>Monthly</option>
-                                            <option value="annually" {{ $income->period === 'annually' ? 'selected' : '' }}>Annually</option>
+                                            <option value="weekly" {{ $budget->period === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                            <option value="monthly" {{ $budget->period === 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                            <option value="annually" {{ $budget->period === 'annually' ? 'selected' : '' }}>Annually</option>
                                         </select>
                                     </div>
                                 </div>
@@ -104,10 +94,22 @@
                                         <input class="form-control"  value="{{ $budget->end_date }}" type="date" name="end_date" id="end_date" required>
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">File</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="file" id="file">
+                                        @if ($budget->file)
+                                            <p>Selected file: {{ $budget->file }}</p>
+                                        @else
+                                            <p>No file selected</p>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>

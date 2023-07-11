@@ -30,15 +30,16 @@
                     <p class="card-text">Amount: {{ $budget->amount }}</p>
                     <p class="card-text">Expense: {{ $budget->expenses_id ? $budget->expense->name : '' }}</p>
                     {{-- <p class="card-text">File: {{ $budget->file }}</p> --}}
+                    
+                    <p class="card-text">Period: {{ $budget->period }}</p>
+                    <p class="card-text">Start Date: {{ $budget->date }}</p>
+                    <p class="card-text">End Date: {{ $budget->end_date }}</p>
                     <p class="card-text">File:</p>
                     @if ($budget->file)
                         <img src="{{ asset('storage/' . $budget->file) }}" width="300" height="300" alt="File Image">
                     @else
                         <p>N/A</p>
                     @endif
-                    <p class="card-text">Period: {{ $budget->period }}</p>
-                    <p class="card-text">Start Date: {{ $budget->date }}</p>
-                    <p class="card-text">End Date: {{ $budget->end_date }}</p>
                 </div>
             </div>
             <div>
