@@ -73,9 +73,26 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Select Period</label>
+                                    <div class="col-sm-10">
+                                        <select name="period" id="period" class="form-select" aria-label="Default select example" required>
+                                            <option selected disabled>Select Period</option>
+                                            <option value="weekly">Weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                            <option value="annually">Annually</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label for="start_date" class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="date" name="date" id="date" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="end_date" class="col-sm-2 col-form-label">End Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" name="end_date" id="end_date" required>
                                     </div>
                                 </div>
                                 <div>

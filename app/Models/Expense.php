@@ -12,6 +12,7 @@ class Expense extends Model
     protected $fillable = [
         'name',
         'parent_id',
+        'expensescategory_id',
         'description',
         'amount',
         'fees',
@@ -32,5 +33,10 @@ class Expense extends Model
     {
         return $this->hasMany(Expense::class, 'parent_id');
 
+    }
+
+    public function expensescategory()
+    {
+        return $this->belongsTo(ExpensesCategory::class, 'expensescategory_id');
     }
 }

@@ -51,9 +51,9 @@ class ExpensesCategoriesController extends Controller
         $expensescategory->updatedby = "";
         $expensescategory->deletedby = "";
 
-        if ($request->has('expenses_id')) {
-            $expensescategory->expenses_id = $request->input('expenses_id');
-        }
+        // if ($request->has('expenses_id')) {
+        //     $expensescategory->expenses_id = $request->input('expenses_id');
+        // }
 
         $expensescategory->save();
 
@@ -71,7 +71,8 @@ class ExpensesCategoriesController extends Controller
     public function show($id)
     {
         $expensescategory = ExpensesCategory::findOrFail($id);
-        return view('expensescategories.show', compact('expensescategory'));
+        $expenses = Expense::where('expensescategory_id', $id)->get();
+        return view('expensescategories.show', compact('expensescategory', 'expenses'));
     }
 
     /**
@@ -101,7 +102,7 @@ class ExpensesCategoriesController extends Controller
         $expensescategory = ExpensesCategory::findOrFail($id);
         $expensescategory->name = $request->input('name');
         $expensescategory->description = $request->input('description');
-        $expensescategory->expenses_id = $request->input('expenses_id');
+        // $expensescategory->expenses_id = $request->input('expenses_id');
         $expensescategory->status = 1;
         $expensescategory->updatedby = $username;
 

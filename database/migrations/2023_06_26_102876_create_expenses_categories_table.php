@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedBigInteger('expenses_id')->index()->nullable();
-            $table->foreign('expenses_id')->references('id')->on('expenses')->onDelete('cascade');
             $table->text('status');
             $table->string('createdby');
             $table->string('updatedby');

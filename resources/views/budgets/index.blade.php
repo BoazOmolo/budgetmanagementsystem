@@ -35,7 +35,9 @@
                                         <th>Amount</th>
                                         <th>Expenses</th>
                                         <th>File</th>
-                                        <th>Date</th>
+                                        <th>Period</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -48,7 +50,9 @@
                                             {{-- <td>{{ $budget->expenses_id ? $budget->expense->name : 'N/A' }}</td> --}}
                                             <td>{{ $budget->expenses_id ? ($budget->expense ? $budget->expense->name : 'N/A') : 'N/A' }}</td>
                                             <td>{{ $budget->file ? $budget->file : 'N/A' }}</td>
+                                            <td>{{ $budget->period }}</td>
                                             <td>{{ $budget->date }}</td>
+                                            <td>{{ $budget->end_date }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('budgets.show', $budget->id ) }}">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('budgets.edit', $budget->id ) }}">Edit</a>

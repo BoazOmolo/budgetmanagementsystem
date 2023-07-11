@@ -32,6 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Expense</th>
+                                        <th>Expense Category</th>
                                         <th>Name</th>
                                         <th>Date</th>
                                         <th>Description</th>
@@ -52,6 +53,7 @@
                                                     N/A
                                                 @endif
                                             </td>
+                                            <td>{{ $expense->expensescategory_id ? $expense->expensescategory->name : 'N/A' }}</td>
                                             <td>{{ $expense->name }}</td>
                                             <td>{{ $expense->date }}</td>
                                             <td>{{ $expense->description }}</td>

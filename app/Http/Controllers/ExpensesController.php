@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\Expense;
+use App\Models\ExpensesCategory;
 
 class ExpensesController extends Controller
 {
@@ -31,9 +32,10 @@ class ExpensesController extends Controller
     public function create(Request $request)
     {
         $parent_id = $request->query("parent_id");
+        $expensescategories = ExpensesCategory::all();
         $expenses = Expense::pluck('name', 'id');
 
-        return view('expenses.create',compact('expenses'))->with(['parent_id' => $parent_id ?? null]);
+        return view('expenses.create',compact('expenses', 'expensescategories'))->with(['parent_id' => $parent_id ?? null]);
     }
 
     /**
@@ -54,6 +56,7 @@ class ExpensesController extends Controller
 
         $expense = new Expense();
         $expense->parent_id = $request->input('parent_id');
+        // $expense->expensescategory_id = $request->input('expensescategory_id');
         $expense->name = $request->input('name');
         $expense->date = $request->input('date');
         $expense->description = $request->input('description');
@@ -64,13 +67,9 @@ class ExpensesController extends Controller
         $expense->updatedby = "";
         $expense->deletedby = "";
 
-        // if ($request->hasFile('file')) {
-        //     $file = $request->file('file');
-        //     $fileName = $file->getClientOriginalName();
-        //     $filePath = 'assets/images/brands/' . $fileName;
-        //     $file->storeAs('public', $filePath);
-        //     $expense->file = $filePath;
-        // }
+        if ($request->has('expensescategory_id')) {
+            $expense->expensescategory_id = $request->input('expensescategory_id');
+        }
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
@@ -117,7 +116,8 @@ class ExpensesController extends Controller
         $expense = Expense::findOrFail($id);
         $parent_id = $request->query("parent_id");
         $expenses = Expense::pluck('name', 'id');
-        return view('expenses.edit', compact('expense', 'expenses', 'parent_id'));
+        $expensescategories = ExpensesCategory::all();
+        return view('expenses.edit', compact('expense', 'expenses', 'parent_id', 'expensescategories'));
     }
 
     /**
@@ -133,6 +133,7 @@ class ExpensesController extends Controller
 
         $expense = Expense::findOrFail($id);
         $expense->parent_id = $request->input('parent_id');
+        $expense->expensescategory_id = $request->input('expensescategory_id');
         $expense->name = $request->input('name');
         $expense->date = $request->input('date');
         $expense->description = $request->input('description');

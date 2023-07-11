@@ -47,7 +47,9 @@ class BudgetsController extends Controller
         $budget = new Budget();
         $budget->name = $request->input('name');
         $budget->amount = $request->input('amount');
+        $budget->period = $request->input('period');
         $budget->date = $request->input('date');
+        $budget->end_date = $request->input('end_date');
         $budget->status = 1;
         $budget->createdby = $username;
         $budget->updatedby = "";
@@ -120,7 +122,9 @@ class BudgetsController extends Controller
         $budget->amount = $request->input('amount');
         $budget->expenses_id = $request->input('expenses_id');
         $budget->file = $request->input('file');
+        $budget->period = $request->input('period');
         $budget->date = $request->input('date');
+        $budget->end_date = $request->input('end_date');
         $budget->status = 1;
         $budget->updatedby = $username;
         

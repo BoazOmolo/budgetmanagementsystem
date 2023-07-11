@@ -28,7 +28,15 @@
                 <div class="card-body">
                     <p class="card-text">Name: {{ $expensescategory->name }}</p>
                     <p class="card-text">Description: {{ $expensescategory->description }}</p>
-                    <p class="card-text">Expenses: {{ $expensescategory->expenses_id ? $expensescategory->expense->name : '' }}</p>
+                    {{-- <p class="card-text">Expenses: {{ $expensescategory->expenses_id ? $expensescategory->expense->name : '' }}</p> --}}
+                    <h4>Expenses:</h4>
+                    <ul>
+                        @forelse ($expenses as $expense)
+                            <li>{{ $expense->name }}</li>
+                        @empty
+                            <li>No expenses found</li>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
             <div>

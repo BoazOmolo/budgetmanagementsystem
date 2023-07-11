@@ -45,6 +45,18 @@
                                     </select>
                                 </div>
                                 
+                                <div class="form-group">
+                                    <label for="expensescategory_id">Select Expense Category:</label>
+                                    <select id="expensescategory_id" name="expensescategory_id" class="form-control">
+                                        <option value="">Select the category</option>
+                                        @foreach($expensescategories as $expensescategory)
+                                            <option value="{{ $expensescategory->id }}" {{ $expense->expensescategory_id == $expensescategory->id ? 'selected' : '' }}>
+                                                {{ $expensescategory->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
@@ -78,12 +90,6 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">File</label>
-                                    <div class="input-group">
-                                        <input type="file" value="{{ $expense->file }}" class="form-control" name="file" id="file">
-                                    </div>
-                                </div> --}}
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">File</label>
                                     <div class="col-sm-10">

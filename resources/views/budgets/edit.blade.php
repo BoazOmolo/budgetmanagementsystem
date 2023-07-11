@@ -82,9 +82,26 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="start_date" class="col-sm-2 col-form-label">Date</label>
+                                    <label class="col-sm-2 col-form-label">Select Period</label>
+                                    <div class="col-sm-10">
+                                        <select name="period" id="period" class="form-select" aria-label="Default select example" required>
+                                            <option selected disabled>Select Period</option>
+                                            <option value="weekly" {{ $income->period === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                            <option value="monthly" {{ $income->period === 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                            <option value="annually" {{ $income->period === 'annually' ? 'selected' : '' }}>Annually</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="start_date" class="col-sm-2 col-form-label">Start Date</label>
                                     <div class="col-sm-10">
                                         <input class="form-control"  value="{{ $budget->date }}" type="date" name="date" id="date" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="start_date" class="col-sm-2 col-form-label">End Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control"  value="{{ $budget->end_date }}" type="date" name="end_date" id="end_date" required>
                                     </div>
                                 </div>
                                 <div>

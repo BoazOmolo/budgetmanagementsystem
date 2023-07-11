@@ -27,6 +27,9 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">Expense: {{ $expense->parent ? $expense->parent->name : 'N/A' }}</p>
+                    {{-- <p class="card-text">Expense Category: {{ $expense->expensescategory_id: 'N/A' }}</p> --}}
+                    <p class="card-text">Expense Category: {{ $expense->expensescategory_id ? $expense->expensescategory->name : 'N/A' }}</p>
+                    
                     <p class="card-text">Name: {{ $expense->name }}</p>
                     <p class="card-text">Date: {{ $expense->date }}</p>
                     <p class="card-text">Description: {{ $expense->description }}</p>

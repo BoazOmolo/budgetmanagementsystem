@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="source" class="col-sm-2 col-form-label">Source</label>
                                     <div class="col-sm-10">
                                         <select name="expenses_id" id="name" class="form-select" aria-label="Default select example">
@@ -54,7 +54,7 @@
                                                     {{ $expense->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div>
                                     <button class="btn btn-primary" type="submit">Submit</button>
