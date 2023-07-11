@@ -50,15 +50,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label for="expensescategory_id">Select Expense Category :</label>
-                                    <select id="expensescategory_id" name="expensescategory_id" class="form-control">
-                                        <option value="">Select the category</option>
-                                        @foreach($expensescategories as $expensecategory => $expensecategoryName)
-                                            <option @if($expenseId == $expensecategory_id) selected="" @endif value="{{ $expensecategory_id }}">{{ $expensecategoryName }}</option>
-                                        @endforeach
-                                    </select>
-                                </div> --}}
+                                
                                 <div class="form-group">
                                     <label for="expensescategory_id">Select Expense Category:</label>
                                     <select id="expensescategory_id" name="expensescategory_id" class="form-control">
@@ -68,9 +60,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                
+                            
+                                <br>
+
                                 <div class="row mb-3">
-                                    <label for="start_date" class="col-sm-2 col-form-label">Date</label>
+                                    <label class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="date" name="date" id="date" required>
                                     </div>

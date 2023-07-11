@@ -66,12 +66,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">File</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" name="file" id="file">
-                                    </div>
-                                </div>
+                               
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Select Period</label>
                                     <div class="col-sm-10">
@@ -93,6 +88,12 @@
                                     <label for="end_date" class="col-sm-2 col-form-label">End Date</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="date" name="end_date" id="end_date" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">File</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="file" id="file">
                                     </div>
                                 </div>
                                 <div>
