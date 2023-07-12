@@ -31,8 +31,11 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <p class="text-truncate font-size-14 mb-2">Budgets</p>
-                                        <h4 class="mb-2">{{ isset($totalbudgets) ? $totalbudgets : '' }}</h4>
+                                        <h4 class="mb-2">{{ isset($totalbudgets) ? $totalbudgets : '' }}</h4>  
                                         <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"></p>
+                                        <div>     
+                                            <a class="btn btn-secondary" href="{{ route('budgets.index') }}">Show latest</a>
+                                        </div>
                                     </div>
                                     <div class="avatar-sm">
                                         <span class="avatar-title bg-light text-primary rounded-3">
@@ -51,6 +54,9 @@
                                         <p class="text-truncate font-size-14 mb-2">Expenses</p>
                                         <h4 class="mb-2">{{ isset($totalexpenses) ? $totalexpenses : '' }}</h4>
                                         <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"></p>
+                                        <div>     
+                                            <a class="btn btn-secondary" href="{{ route('expenses.index') }}">Show latest</a>
+                                        </div>
                                     </div>
                                     <div class="avatar-sm">
                                         <span class="avatar-title bg-light text-success rounded-3">
@@ -69,6 +75,9 @@
                                         <p class="text-truncate font-size-14 mb-2">Incomes</p>
                                         <h4 class="mb-2">{{ isset($totalincomes) ? $totalincomes : '' }}</h4>
                                         <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"></p>
+                                        <div>     
+                                            <a class="btn btn-secondary" href="{{ route('incomes.index') }}">Show latest</a>
+                                        </div>
                                     </div>
                                     <div class="avatar-sm">
                                         {{-- <span class="avatar-title bg-light text-primary rounded-3">

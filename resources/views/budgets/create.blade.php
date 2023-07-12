@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="source" class="col-sm-2 col-form-label">Source</label>
+                                    <label for="source" class="col-sm-2 col-form-label">Expense</label>
                                     <div class="col-sm-10">
                                         <select name="expenses_id" id="source" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Source</option>
