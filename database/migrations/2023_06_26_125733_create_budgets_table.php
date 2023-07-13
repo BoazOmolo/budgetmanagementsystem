@@ -29,6 +29,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('deletedby');
             $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('processed_at')->nullable();
         });
     }
 

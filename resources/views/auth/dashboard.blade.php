@@ -106,6 +106,12 @@
                             <form action="{{ route('auth.dashboard') }}" method="GET">
                                 <div class="row">
                                     <div class="col-md-3">
+                                        <?php
+                                        $selectedMonth = ''; // Initialize the variable with an empty value
+                                        if (isset($_GET['month'])) {
+                                            $selectedMonth = $_GET['month']; // Set the value based on the GET parameter
+                                        }
+                                        ?>
                                         <select name="month" class="form-select" onchange="this.form.submit()">
                                             <option value="">Select a month</option>
                                             <option value="january" {{ $selectedMonth === 'january' ? 'selected' : '' }}>January</option>
