@@ -142,9 +142,10 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" id="exportBudgetsButton">Export Budgets Report</a>
                                     </div>
                                 </div>
+
 
                                 <h4 class="card-title mb-4">Budgets</h4>
 
@@ -193,10 +194,10 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" id="exportExpensesButton">Export Expenses Report</a>
                                     </div>
                                 </div>
-
+                                
                                 <h4 class="card-title mb-4">Expenses</h4>
 
                                 <div class="table-responsive">
@@ -275,3 +276,4 @@
     </div>
     
 @endsection
+

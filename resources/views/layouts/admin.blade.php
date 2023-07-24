@@ -54,10 +54,10 @@
                         <div class="navbar-brand-box"> 
                             <a href="" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="logo-sm-light" height="22">
+                                    <img src="{{ asset('assets/images/logo-sm.png')}}" alt="logo-sm-light" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="logo-light" height="20">
+                                    <img src="{{ asset('assets/images/logo-light.png')}}" alt="logo-light" height="20">
                                 </span>
                             </a>
                         </div>
@@ -351,7 +351,49 @@
             @endif
         </script>
 
-       
+        <script>
+            document.getElementById('exportBudgetsButton').addEventListener('click', function() {
+                // Get the table content for Budgets
+                const table = document.querySelectorAll('.table-responsive')[0].querySelector('table');
+                const tableContent = table.outerHTML;
+
+                // Create a Blob containing the table content
+                const blob = new Blob([tableContent], { type: 'text/html' });
+
+                // Create a URL for the Blob
+                const url = URL.createObjectURL(blob);
+
+                // Create a temporary anchor element to trigger the download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'budgets_report.html'; // Change the filename if you want a different extension
+                downloadLink.click();
+
+                // Clean up by revoking the URL
+                URL.revokeObjectURL(url);
+            });
+
+            document.getElementById('exportExpensesButton').addEventListener('click', function() {
+                // Get the table content for Expenses
+                const table = document.querySelectorAll('.table-responsive')[1].querySelector('table');
+                const tableContent = table.outerHTML;
+
+                // Create a Blob containing the table content
+                const blob = new Blob([tableContent], { type: 'text/html' });
+
+                // Create a URL for the Blob
+                const url = URL.createObjectURL(blob);
+
+                // Create a temporary anchor element to trigger the download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'expenses_report.html'; // Change the filename if you want a different extension
+                downloadLink.click();
+
+                // Clean up by revoking the URL
+                URL.revokeObjectURL(url);
+            });
+        </script>
 
     </body>
 
