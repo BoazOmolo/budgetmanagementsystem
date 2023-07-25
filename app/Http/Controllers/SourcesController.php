@@ -50,7 +50,7 @@ class SourcesController extends Controller
         $source->save();
 
         Session::flash('successcode','success');
-        return redirect()->route('sources.index')->with('success', 'Income created successfully.');
+        return redirect()->route('sources.index')->with('success', 'Income source created successfully.');
     }
 
     /**
