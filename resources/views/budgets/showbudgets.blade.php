@@ -41,9 +41,10 @@
                                         <p>{{ $budget->date->format('F j, Y') }}</p>
                                     </td>
                                     <td>Ksh: {{ $budget->amount }}</td>
-                                    {{-- <td>
-                                        <a href="{{ route('budgets.show', ['year' => $budget->date->year, 'month' => $budget->date->month]) }}" class="btn btn-primary">Show Budget</a>
-                                    </td> --}}
+                                    <td>
+                                        {{-- <a href="{{ route('budgets.show', ['budget_id' => $budget->id]) }}" class="btn btn-primary">View Details</a> --}}
+                                        <a href="{{ route('budgets.show', $budget->id) }}" class="btn btn-primary">View Details</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
