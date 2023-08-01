@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\Expense;
 use App\Models\ExpensesCategory;
+use Carbon\Carbon; 
 
 class ExpensesController extends Controller
 {
@@ -203,4 +204,21 @@ class ExpensesController extends Controller
         Session::flash('successcode','warning');
         return redirect()->route('expenses.index')->with('success', 'Expense deleted successfully.');
     }
+
+    public function showexpenses($year, $month)
+    {
+        // Fetch individual budgets for the selected month and year
+        $expenses = Expense::whereYear('date', $year)
+            ->whereMonth('date', $month)
+            ->get();
+    
+        // Calculate the total budget amount for the selected month and year
+        $totalExpense = $expenses->sum('amount');
+    
+        // Format the selected month and year for display
+        $selectedMonth = \Carbon\Carbon::create($year, $month, 1)->format('F Y');
+    
+        // Pass the data to the "show_budgets" view
+        return view('expenses.showexpenses', compact('expenses', 'selectedMonth', 'totalExpense'));
+    }    
 }

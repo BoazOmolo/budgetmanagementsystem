@@ -23,7 +23,7 @@ class Expense extends Model
         'updated_at'
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'date'];
     public function parent()
     {
         return $this->belongsTo(Expense::class, 'parent_id');

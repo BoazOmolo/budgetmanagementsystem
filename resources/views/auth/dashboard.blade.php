@@ -216,6 +216,7 @@
                                                 <th>Period</th> 
                                                 <th>Amount</th>
                                                 <th>Profit/Loss</th>   
+                                                <th>View Details</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -245,6 +246,9 @@
                                                             @else
                                                                 <span class="text-muted">No difference</span>
                                                             @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('expenses.showexpenses', ['year' => $expense->year, 'month' => $expense->month]) }}" class="btn btn-primary">Show Expense</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
