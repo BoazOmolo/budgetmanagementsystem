@@ -18,7 +18,8 @@ class Budget extends Model
         'updated_at'
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'date'];
+    // protected $dates = ['date'];
 
     public function expense()
     {

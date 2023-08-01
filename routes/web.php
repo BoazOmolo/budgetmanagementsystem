@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/budgets/{budget}/edit', [BudgetsController::class, 'edit'])->name('budgets.edit');
     Route::put('/budgets/{budget}', [BudgetsController::class, 'update'])->name('budgets.update');
     Route::delete('/budgets/{id}', [BudgetsController::class, 'destroy']) ->name('budgets.destroy');
+    Route::get('/budgets/{year}/{month}',[BudgetsController::class, 'showbudgets'])->name('budgets.showbudgets');
     Route::get('/expensescategories', [ExpensesCategoriesController::class, 'index'])->name('expensescategories.index');
     Route::get('/expensescategories/create', [ExpensesCategoriesController::class, 'create'])->name('expensescategories.create');
     Route::post('/expensescategories', [ExpensesCategoriesController::class, 'store'])->name('expensescategories.store');

@@ -202,4 +202,22 @@ class BudgetsController extends Controller
         Session::flash('successcode','warning');
         return redirect()->route('budgets.index')->with('success', 'Budget deleted successfully.');
     }
+
+    public function showbudgets($year, $month)
+    {
+        // Fetch individual budgets for the selected month and year
+        $budgets = Budget::whereYear('date', $year)
+            ->whereMonth('date', $month)
+            ->get();
+    
+        // Calculate the total budget amount for the selected month and year
+        $totalBudget = $budgets->sum('amount');
+    
+        // Format the selected month and year for display
+        $selectedMonth = \Carbon\Carbon::create($year, $month, 1)->format('F Y');
+    
+        // Pass the data to the "show_budgets" view
+        return view('budgets.showbudgets', compact('budgets', 'selectedMonth', 'totalBudget'));
+    }
+    
 }

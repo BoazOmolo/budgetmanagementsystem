@@ -159,30 +159,33 @@
                                         <thead class="table-light">
                                             <tr>
                                                 {{-- <th>Name</th> --}}
-                                                <th>Period</th>   
+                                                <th>Period</th>
                                                 <th>Amount</th>
+                                                <th>View Details</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tbody>
-                                                @foreach($budgets as $budget)
-                                                    <tr>
-                                                        {{-- <td>{{ $budget->name }}</td> --}}
-                                                        <td>
-                                                            <?php
-                                                            $carbonDate = \Carbon\Carbon::create($budget->year, $budget->month, 1);
-                                                            $monthName = $carbonDate->format('F');
-                                                            ?>
-                                                            
-                                                            <p>{{ $monthName }} {{ $budget->year }}</p>
-                                                        </td>
-                                                        <td>Ksh: {{ $budget->total }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
+                                            @foreach($budgets as $budget)
+                                                <tr>
+                                                    {{-- <td>{{ $budget->name }}</td> --}}
+                                                    <td>
+                                                        <?php
+                                                        $carbonDate = \Carbon\Carbon::create($budget->year, $budget->month, 1);
+                                                        $monthName = $carbonDate->format('F');
+                                                        ?>
+                                
+                                                        <p>{{ $monthName }} {{ $budget->year }}</p>
+                                                    </td>
+                                                    <td>Ksh: {{ $budget->total }}</td>
+                                                    <td>
+                                                        <a href="{{ route('budgets.showbudgets', ['year' => $budget->year, 'month' => $budget->month]) }}" class="btn btn-primary">Show Budget</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
+                                
                             </div><!-- end card -->
                         </div><!-- end card -->
                     </div>
