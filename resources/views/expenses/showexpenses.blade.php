@@ -24,7 +24,7 @@
             <!-- Add the new section for showing budgets for a specific month and year -->
             <!-- Add the new section for showing budgets for a specific month and year -->
             <div class="mt-4">
-                <h1>Budgets for {{ $selectedMonth }}</h1>
+                <h1>Expenses for {{ $selectedMonth }}</h1>
                 <div class="table-responsive">
                     <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                         <thead class="table-light">
