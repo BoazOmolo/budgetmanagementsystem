@@ -17,9 +17,18 @@ class ExpensesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $expenses = Expense::where('status', 1)->get();
+        // $expenses = Expense::where('status', 1)->get();
+        // return view('expenses.index', compact('expenses'));
+        $query = Expense::where('status', 1);
+
+        if ($request->has('filter_date')) {
+            $date = $request->input('filter_date');
+            $query->whereDate('date', '=', $date);
+        }
+
+        $expenses = $query->get();
         return view('expenses.index', compact('expenses'));
     }
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\Budget;
 use App\Models\Expense;
+use Carbon\Carbon; 
 
 class BudgetsController extends Controller
 {
@@ -17,9 +18,30 @@ class BudgetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $budgets = Budget::where('status', 1)->get();
+        // $budgets = Budget::where('status', 1)->get();
+        // return view('budgets.index', compact('budgets'));
+        $query = Budget::where('status', 1);
+
+        if ($request->has('filter_date')) {
+            $date = $request->input('filter_date');
+            $query->whereDate('date', '=', $date);
+        }
+        
+        if ($request->has('period')) {
+            $period = $request->input('period');
+            if ($period === 'weekly') {
+                $query->orWhere('period', '=', 'weekly');
+            } elseif ($period === 'monthly') {
+                $query->orWhere('period', '=', 'monthly');
+            } elseif ($period === 'annually') {
+                $query->orWhere('period', '=', 'annually');
+            }
+        }
+
+        // dd($period);
+        $budgets = $query->get();
         return view('budgets.index', compact('budgets'));
     }
 

@@ -26,6 +26,19 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <form action="{{ route('expenses.index') }}" method="get">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Filter by Date</label>
+                                    <input type="date" name="filter_date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <br/>
+                                    <button type="submit" class="btn btn-secondary">Filter</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="card-body">
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
