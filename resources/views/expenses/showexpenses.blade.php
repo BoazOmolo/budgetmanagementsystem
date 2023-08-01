@@ -49,7 +49,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p>Total Budget Amount: Ksh {{ $totalExpense }}</p>
+                <p><strong>Total Budget Amount: Ksh {{ $totalExpense }}</strong></p>
             </div>
         </div>
     </div>
