@@ -50,6 +50,9 @@
                     </table>
                 </div>
                 <p><strong>Total Budget Amount: Ksh {{ $totalExpense }}</strong></p>
+                <div>
+                    <a class="btn btn-secondary" href="{{ route('auth.dashboard') }}">Home</a>
+                </div>
             </div>
         </div>
     </div>
