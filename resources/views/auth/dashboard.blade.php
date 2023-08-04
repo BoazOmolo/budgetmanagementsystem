@@ -31,7 +31,7 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <p class="text-truncate font-size-14 mb-2">Budgets</p>
-                                        <h4 class="mb-2">{{ $selectedMonth ? 'Ksh: '.$budgets->where('month', date('m', strtotime($selectedMonth)))->sum('total') : 'Ksh: '.$totalbudgets }}</h4>
+                                        {{-- <h4 class="mb-2">{{ $selectedMonth ? 'Ksh: '.$budgets->where('month', date('m', strtotime($selectedMonth)))->sum('total') : 'Ksh: '.$totalbudgets }}</h4> --}}
                                         {{-- <h4 class="mb-2">{{ $totalbudgets ?? '' }}</h4> --}}
                                         {{-- <h4 class="mb-2">{{ isset($totalbudgets) ? $totalbudgets : '' }}</h4>   --}}
                                         {{-- <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"></p> --}}
@@ -54,7 +54,7 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <p class="text-truncate font-size-14 mb-2">Expenses</p>
-                                        <h4 class="mb-2">{{ $selectedMonth ? 'Ksh: '.$expenses->where('month', date('m', strtotime($selectedMonth)))->sum('total') : 'Ksh: '.$totalexpenses }}</h4>
+                                        {{-- <h4 class="mb-2">{{ $selectedMonth ? 'Ksh: '.$expenses->where('month', date('m', strtotime($selectedMonth)))->sum('total') : 'Ksh: '.$totalexpenses }}</h4> --}}
                                         {{-- <h4 class="mb-2">{{ $totalexpenses ?? '' }}</h4> --}}
                                         {{-- <h4 class="mb-2">{{ isset($totalexpenses) ? $totalexpenses : '' }}</h4> --}}
                                         {{-- <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"></p> --}}
@@ -165,23 +165,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($budgets as $budget)
+                                            {{-- @foreach($budgets as $budget) --}}
                                                 <tr>
                                                     {{-- <td>{{ $budget->name }}</td> --}}
                                                     <td>
                                                         <?php
-                                                        $carbonDate = \Carbon\Carbon::create($budget->year, $budget->month, 1);
-                                                        $monthName = $carbonDate->format('F');
+                                                        // $carbonDate = \Carbon\Carbon::create($budget->year, $budget->month, 1);
+                                                        // $monthName = $carbonDate->format('F');
                                                         ?>
                                 
-                                                        <p>{{ $monthName }} {{ $budget->year }}</p>
+                                                        {{-- <p>{{ $monthName }} {{ $budget->year }}</p> --}}
                                                     </td>
-                                                    <td>Ksh: {{ $budget->total }}</td>
-                                                    <td>
+                                                    {{-- <td>Ksh: {{ $budget->total }}</td> --}}
+                                                    {{-- <td>
                                                         <a href="{{ route('budgets.showbudgets', ['year' => $budget->year, 'month' => $budget->month]) }}" class="btn btn-primary">Show Budget</a>
-                                                    </td>
+                                                    </td> --}}
                                                 </tr>
-                                            @endforeach
+                                            {{-- @endforeach --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -221,21 +221,21 @@
                                         </thead>
                                         <tbody>
                                             <tbody>
-                                                @foreach($expenses as $expense)
+                                                {{-- @foreach($expenses as $expense) --}}
                                                     <tr>
                                                         {{-- <td>{{ $expense->name }}</td> --}}
                                                        
                                                         <td>
                                                             <?php
-                                                            $carbonDate = \Carbon\Carbon::create($expense->year, $expense->month, 1);
-                                                            $monthName = $carbonDate->format('F');
+                                                            // $carbonDate = \Carbon\Carbon::create($expense->year, $expense->month, 1);
+                                                            // $monthName = $carbonDate->format('F');
                                                             ?>
                                                             
-                                                            <p>{{ $monthName }} {{ $expense->year }}</p>
+                                                            {{-- <p>{{ $monthName }} {{ $expense->year }}</p> --}}
                                                         </td>
-                                                        <td>Ksh: {{ $expense->total }}</td>
+                                                        {{-- <td>Ksh: {{ $expense->total }}</td> --}}
                                                         <td>
-                                                            @php
+                                                            {{-- @php
                                                                 $matchingBudget = $budgets->where('year', $expense->year)->where('month', $expense->month)->first();
                                                                 $difference = $matchingBudget ? $matchingBudget->total - $expense->total : 0;
                                                             @endphp
@@ -245,13 +245,13 @@
                                                                 <span class="text-danger">Ksh {{ $difference }}</span>
                                                             @else
                                                                 <span class="text-muted">No difference</span>
-                                                            @endif
+                                                            @endif --}}
                                                         </td>
-                                                        <td>
+                                                        {{-- <td>
                                                             <a href="{{ route('expenses.showexpenses', ['year' => $expense->year, 'month' => $expense->month]) }}" class="btn btn-primary">Show Expense</a>
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
-                                                @endforeach
+                                                {{-- @endforeach --}}
 
                                             </tbody>
                                         </tbody>
