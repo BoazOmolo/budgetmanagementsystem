@@ -173,24 +173,13 @@
                             <li class="menu-title">Menu</li>
 
                             <li>
-                                <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                                <a href="{{ route('auth.dashboard') }}" class="waves-effect">
                                     <i class="ri-dashboard-line"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>   
 
                             <li class="menu-title">Pages</li>
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-account-circle-line"></i>
-                                    <span>User Management</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
-                                    <li><a href="{{ route('admin.users') }}">Users</a></li>
-                                   
-                                </ul>
-                            </li>
 
                             <li>
                                 <a href="{{ route('incomes.index') }}" class="waves-effect">
