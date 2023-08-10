@@ -170,8 +170,31 @@
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
+                            @auth
+                                <!-- Role-based menu items for admin -->
+                                @if(auth()->user()->role_as == '1')
+                                    <li class="menu-title">Admin Pages</li>
+                                    <li>
+                                        <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                                            <i class="ri-dashboard-line"></i>
+                                            <span>Admin Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                            <i class="ri-account-circle-line"></i>
+                                            <span>User Management</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
+                                            <li><a href="{{ route('admin.users') }}">Users</a></li>
+                                        
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endauth
                             <li class="menu-title">Menu</li>
-
+                            
                             <li>
                                 <a href="{{ route('auth.dashboard') }}" class="waves-effect">
                                     <i class="ri-dashboard-line"></i>
@@ -231,19 +254,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            {{-- <li>
-                                <a href="{{ route('expensescategories.index') }}" class="waves-effect">
-                                    <i class="ri-dashboard-line"></i>
-                                    <span>Expense Categories</span>
-                                </a>
-                            </li>   --}}
-                           
-                            {{-- <li>
-                                <a href="{{ route('files.index') }}" class="waves-effect">
-                                    <i class="ri-dashboard-line"></i>
-                                    <span>Files</span>
-                                </a>
-                            </li>         --}}
                         </ul>
                     </div>
                     <!-- Sidebar -->
