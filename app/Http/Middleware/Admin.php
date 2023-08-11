@@ -22,12 +22,11 @@ class Admin
         {
             if (Auth::user()->role_as == '1') {
                 return $next($request);
-            } else {
-                return redirect('/home')->with('success', 'Access Denied as You are not an admin!');
             }
+            // Non-admin users are allowed to access non-admin routes
+            return abort(403, 'Access Forbidden');
         }
-        else{
-            return redirect('/login')->with('success', 'Please Login!');
-        }
+        // Allow unauthenticated users to access non-admin routes
+        return $next($request);
     }
 }
