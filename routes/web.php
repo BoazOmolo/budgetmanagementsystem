@@ -11,6 +11,8 @@ use App\Http\Controllers\ExpensesCategoriesController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\TasksController;
 
 
 /*
@@ -127,5 +129,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::post('/files', [FilesController::class, 'store'])->name('files.store');
     Route::get('/files/{file}', [FilesController::class, 'show'])->name('files.show');
     Route::delete('/files/{id}', [FilesController::class, 'destroy']) ->name('files.destroy');
+    Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
+    Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.create');
+    Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{project}', [ProjectsController::class, 'show'])->name('projects.show');
+    Route::get('/tasks', [TasksController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/create', [TasksController::class, 'create'])->name('tasks.create');
+    Route::post('/tasks', [TasksController::class, 'store'])->name('tasks.store');
 });
 

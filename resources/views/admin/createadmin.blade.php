@@ -15,21 +15,30 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="name" id="name" required>
+                                        <input class="form-control" type="text" name="name" id="name" required value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">E-Mail Address</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="email" id="email" required>
+                                        <input class="form-control" type="text" name="email" id="email" required value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="password" id="password" required>
+                                        <input class="form-control" type="password" name="password" id="password" required>
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Confirm Password</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
+                                    </div>
+                                </div>
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div>
                                     <button class="btn btn-primary" type="submit">Create Administrator</button>
                                     <a class="btn btn-secondary" href="{{ url()->previous() }}">Back</a>

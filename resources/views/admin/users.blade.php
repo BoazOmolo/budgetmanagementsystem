@@ -36,7 +36,6 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -46,7 +45,6 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $administrator->name }}</td>
                                             <td>{{ $administrator->email }}</td>
-                                            <td>{{ $administrator->password }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>
@@ -70,7 +68,6 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -80,7 +77,6 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->password }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>

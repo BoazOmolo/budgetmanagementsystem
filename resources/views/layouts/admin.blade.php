@@ -191,6 +191,17 @@
                                         
                                         </ul>
                                     </li>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                            <i class="ri-account-circle-line"></i>
+                                            <span>Project Management</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
+                                            <li><a href="{{ route('projects.index') }}">Projects</a></li>
+                                            <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
+                                        </ul>
+                                    </li> 
                                 @endif
                             @endauth
                             <li class="menu-title">Menu</li>

@@ -40,7 +40,9 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
+        ], [
+            'password.confirmed' => 'The passwords do not match.',
         ]);
 
         $user = new User();
@@ -66,7 +68,9 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
+        ], [
+            'password.confirmed' => 'The passwords do not match.',
         ]);
         $administrator = new User();
         $administrator->name = $validatedData['name'];
