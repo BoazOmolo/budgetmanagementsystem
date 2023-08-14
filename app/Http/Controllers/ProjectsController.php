@@ -84,7 +84,9 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $users = User::all();
+        return view('projects.edit', compact('project', 'users'));
     }
 
     /**
@@ -96,7 +98,23 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $project = Project::findOrFail($id);
+        $project->name = $request->input('name');
+        $project->description = $request->input('description');
+        $project->start_date = $request->input('start_date');
+        $project->end_date = $request->input('end_date');
+        $project->manager = $request->input('manager');
+        $project->status = 'Complete';
+        $project->updatedby = $username;
+
+        $project->save();
+
+        unset($project->updated_at);
+
+        Session::flash('successcode','success');
+        return redirect()->route('projects.index')->with('success', 'Project details updated successfully.');
     }
 
     /**
@@ -107,6 +125,15 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $project = Project::findOrFail($id);
+        $project->deletedby = $username;
+        $project->save();
+
+        $project->delete();
+
+        Session::flash('successcode','warning');
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
 }

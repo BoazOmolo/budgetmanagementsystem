@@ -68,7 +68,8 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('tasks.show', compact('task'));
     }
 
     /**
@@ -79,7 +80,11 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $tasks = Task::pluck('name', 'id');
+        $projects = Project::all();
+        
+        return view('tasks.edit', compact('task','tasks','projects'));
     }
 
     /**
@@ -91,7 +96,22 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $task = Task::findOrFail($id);
+        $task->project_id = $request->input('project_id');
+        $task->name = $request->input('name');
+        $task->description = $request->input('description');
+        // $task->status = $request->input('status');
+        $task->status = 'Complete';
+        $task->updatedby = $username;
+
+        $task->save();
+
+        unset($task->updated_at);
+
+        Session::flash('successcode','success');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
     }
 
     /**
@@ -102,6 +122,15 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $username = Auth::user()->name;
+
+        $task = Task::findOrFail($id);
+        $task->deletedby = $username;
+        $task->save();
+
+        $task->delete();
+
+        Session::flash('successcode','warning');
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
     }
 }
