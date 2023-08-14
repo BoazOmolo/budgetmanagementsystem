@@ -57,9 +57,9 @@
                                             <td>{{ $task->description }}</td>
                                             <td>{{ $task->status }}</td>
                                             <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a> 
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('tasks.show', $task->id ) }}">View</a> 
+                                                <a class="btn btn-secondary upcube-btn" href="{{ route('tasks.edit', $task->id ) }}">Edit</a>
+                                                <form action="{{ route('tasks.destroy', $task->id ) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>
