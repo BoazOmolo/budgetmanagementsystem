@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->text('name');
             $table->text('description');
-            $table->text('status');
+            $table->string('status');
             $table->string('createdby');
             $table->string('updatedby');
             $table->timestamps();

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->text('manager');
-            $table->text('status');
+            $table->string('status');
             $table->string('createdby');
             $table->string('updatedby');
             $table->timestamps();
