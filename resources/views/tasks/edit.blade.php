@@ -75,11 +75,11 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Project Status</label>
                                     <div class="col-sm-10">
-                                        <select value="{{ $task->status }}" name="status" id="status" class="form-select" aria-label="Default select example" required>
-                                            <option selected disabled>Select Status</option>
-                                            <option value="inprogress">In Progress</option>
-                                            <option value="completed">Completed</option>
-                                            <option value="pending">Pending</option>
+                                        <select name="status" class="form-select" aria-label="Default select example" required>
+                                            <option value="" selected disabled>Select Status</option>
+                                            <option value="In Progress" @if($task->status === 'In Progress') selected @endif>In Progress</option>
+                                            <option value="Completed" @if($task->status === 'Completed') selected @endif>Completed</option>
+                                            <option value="Pending" @if($task->status === 'Pending') selected @endif>Pending</option>
                                         </select>
                                     </div>
                                 </div>

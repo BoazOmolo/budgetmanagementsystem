@@ -50,8 +50,8 @@ class TasksController extends Controller
         $task->description = $request->input('description');
         $task->start_date = $request->input('start_date');
         $task->end_date = $request->input('end_date');
-        // $task->status = $request->input('status');
-        $task->status = 'In Progress';
+        $task->status = $request->input('status');
+        // $task->status = 'In Progress';
         $task->createdby = $username;
         $task->updatedby = "";
         $task->deletedby = "";
@@ -106,8 +106,8 @@ class TasksController extends Controller
         $task->description = $request->input('description');
         $task->start_date = $request->input('start_date');
         $task->end_date = $request->input('end_date');
-        // $task->status = $request->input('status');
-        $task->status = 'Complete';
+        $task->status = $request->input('status');
+        // $task->status = 'Complete';
         $task->updatedby = $username;
 
         $task->save();

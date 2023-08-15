@@ -39,7 +39,10 @@ class DashboardController extends Controller
         $totalbudgets = Budget::sum('amount');
         $totalincomes = Income::sum('amount');
         $totalexpenses = Expense::sum('amount');
-        $totaltasks = Task::count();
+        $statusesToCount = ['pending', 'in progress'];
+        $totaltasks = Task::whereIn('status', $statusesToCount)->count();
+        //$totaltasks = Task::count();
+
 
         // Fetch data for budgets and expenses based on the selected month
         $budgets = $budgetsQuery->get();

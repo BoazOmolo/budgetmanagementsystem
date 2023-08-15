@@ -73,11 +73,11 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Project Status</label>
                                     <div class="col-sm-10">
-                                        <select name="status" id="status" class="form-select" aria-label="Default select example" required>
+                                        <select name="status" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Select Status</option>
-                                            <option value="inprogress">In Progress</option>
-                                            <option value="completed">Completed</option>
-                                            <option value="pending">Pending</option>
+                                            <option value="In Progress">In Progress</option>
+                                            <option value="Completed">Completed</option>
+                                            <option value="Pending">Pending</option>
                                         </select>
                                     </div>
                                 </div>

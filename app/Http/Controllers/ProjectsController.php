@@ -51,8 +51,8 @@ class ProjectsController extends Controller
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->manager = $request->input('manager');
-        // $project->status = $request->input('status');
-        $project->status = 'Pending';
+        $project->status = $request->input('status');
+        // $project->status = 'Pending';
         $project->createdby = $username;
         $project->updatedby = "";
         $project->deletedby = "";
@@ -106,7 +106,7 @@ class ProjectsController extends Controller
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->manager = $request->input('manager');
-        $project->status = 'Complete';
+        $project->status = $request->input('status');
         $project->updatedby = $username;
 
         $project->save();
