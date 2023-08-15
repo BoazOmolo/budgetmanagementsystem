@@ -49,7 +49,17 @@
                                             <td>{{ $task->description }}</td>
                                             <td>{{ $task->start_date ?? 'N/A' }}</td>
                                             <td>{{ $task->end_date ?? 'N/A'}}</td>
-                                            <td>{{ $task->status }}</td>
+                                            {{-- <td>{{ $task->status }}</td> --}}
+                                            <td style="color:
+                                                @if($task->status === 'Pending')
+                                                    grey;
+                                                @elseif($task->status === 'In Progress')
+                                                    red;
+                                                @elseif($task->status === 'Completed')
+                                                    green;
+                                                @endif">
+                                                {{ $task->status }}
+                                            </td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('tasks.show', $task->id ) }}">View</a> 
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('tasks.edit', $task->id ) }}">Edit</a>

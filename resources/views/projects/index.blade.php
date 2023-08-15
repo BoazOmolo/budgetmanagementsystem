@@ -49,7 +49,17 @@
                                             <td>{{ $project->start_date }}</td>
                                             <td>{{ $project->end_date }}</td>
                                             <td>{{ $project->manager }}</td>
-                                            <td>{{ $project->status }}</td>
+                                            {{-- <td>{{ $project->status }}</td> --}}
+                                            <td style="color:
+                                                @if($project->status === 'Pending')
+                                                    grey;
+                                                @elseif($project->status === 'In Progress')
+                                                    red;
+                                                @elseif($project->status === 'Completed')
+                                                    green;
+                                                @endif">
+                                                {{ $project->status }}
+                                            </td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('projects.show', $project->id ) }}">View</a> 
                                                 <a class="btn btn-secondary upcube-btn" href="{{ route('projects.edit', $project->id ) }}">Edit</a>
