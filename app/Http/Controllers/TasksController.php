@@ -19,8 +19,8 @@ class TasksController extends Controller
     {
         $tasks = Task::all();
         $taskStatusColors = [
-            'Pending' => '#D3D3D3',
-            'In Progress' => '#FFC0C0',
+            'Pending' => '#FFC0C0',
+            'In Progress' => '#D3D3D3',
             'Completed' => '#C0FFC0',
         ];
         return view('tasks.index', compact('tasks', 'taskStatusColors'));
