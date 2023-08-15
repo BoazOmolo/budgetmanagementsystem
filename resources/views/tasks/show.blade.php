@@ -29,6 +29,8 @@
                     <p class="card-text">Project Title: {{ $task->project_id ? $task->project->name : 'N/A'  }}</p>
                     <p class="card-text">Name: {{ $task->name }}</p>
                     <p class="card-text">Description: {{ $task->description }}</p>
+                    <p class="card-text"> Start Date: {{ $task->start_date ?? 'N/A' }}</p>
+                    <p class="card-text"> End Date: {{ $task->end_date ?? 'N/A'}}</p>
                 </div>
             </div>
             <div>

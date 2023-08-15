@@ -57,7 +57,18 @@
                                         <textarea class="form-control" rows="5" type="text" name="description" id="description" required></textarea>
                                     </div>
                                 </div>
-                               
+                                <div class="row mb-3">
+                                    <label for="start_date" class="col-sm-2 col-form-label">Start Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" name="start_date" id="start_date" >
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="end_date" class="col-sm-2 col-form-label">End Date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" name="end_date" id="end_date" >
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Project Status</label>
                                     <div class="col-sm-10">

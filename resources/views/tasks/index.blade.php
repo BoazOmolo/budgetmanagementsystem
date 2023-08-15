@@ -34,6 +34,8 @@
                                         <th>Project Title</th>
                                         <th>Name</th>
                                         <th>Description</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -45,6 +47,8 @@
                                             <td>{{ $task->project_id ? $task->project->name : 'N/A' }}</td>
                                             <td>{{ $task->name }}</td>
                                             <td>{{ $task->description }}</td>
+                                            <td>{{ $task->start_date ?? 'N/A' }}</td>
+                                            <td>{{ $task->end_date ?? 'N/A'}}</td>
                                             <td>{{ $task->status }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('tasks.show', $task->id ) }}">View</a> 

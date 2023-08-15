@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Budget;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
@@ -38,13 +39,14 @@ class DashboardController extends Controller
         $totalbudgets = Budget::sum('amount');
         $totalincomes = Income::sum('amount');
         $totalexpenses = Expense::sum('amount');
+        $totaltasks = Task::count();
 
         // Fetch data for budgets and expenses based on the selected month
         $budgets = $budgetsQuery->get();
         $expenses = $expensesQuery->get();
 
         // Pass the data to the view
-        return view('auth.dashboard', compact('totalbudgets', 'totalexpenses', 'totalincomes', 'budgets', 'expenses', 'selectedMonth'));
+        return view('auth.dashboard', compact('totalbudgets', 'totalexpenses', 'totalincomes', 'totaltasks', 'budgets', 'expenses', 'selectedMonth'));
     }
     
 
