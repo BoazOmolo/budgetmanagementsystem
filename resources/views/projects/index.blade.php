@@ -50,15 +50,21 @@
                                             <td>{{ $project->end_date }}</td>
                                             <td>{{ $project->manager }}</td>
                                             {{-- <td>{{ $project->status }}</td> --}}
-                                            <td style="color:
-                                                @if($project->status === 'Pending')
-                                                    grey;
-                                                @elseif($project->status === 'In Progress')
-                                                    red;
-                                                @elseif($project->status === 'Completed')
-                                                    green;
-                                                @endif">
-                                                {{ $project->status }}
+                                            <td>
+                                                <div style="
+                                                    @if($project->status === 'Pending')
+                                                        background-color: #D3D3D3;
+                                                    @elseif($project->status === 'In Progress')
+                                                        background-color: #FFC0C0;
+                                                    @elseif($project->status === 'Completed')
+                                                        background-color: #C0FFC0;
+                                                    @endif
+                                                    padding: 5px;
+                                                    display: inline-block;
+                                                    border-radius: 10px;
+                                                ">
+                                                    {{ $project->status }}
+                                                </div>
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('projects.show', $project->id ) }}">View</a> 

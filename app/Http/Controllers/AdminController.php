@@ -11,7 +11,9 @@ class AdminController extends Controller
     public function admin()
     {
         $totalusers = User::count();
-        $projects = Project::count();
+        $statusesToCount = ['pending', 'in progress'];
+        $projects = Project::whereIn('status', $statusesToCount)->count();
+        // $projects = Project::count();
         $administrators = User::where('role_as', 1)->count(); // Retrieve administrators
         $users = User::where('role_as', 0)->count(); // Retrieve regular users
         return view('admin.dashboard', compact('totalusers', 'administrators', 'users','projects'))->with('success', 'Admin Logged In Successfully!');

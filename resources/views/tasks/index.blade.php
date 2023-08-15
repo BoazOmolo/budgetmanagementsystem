@@ -50,15 +50,21 @@
                                             <td>{{ $task->start_date ?? 'N/A' }}</td>
                                             <td>{{ $task->end_date ?? 'N/A'}}</td>
                                             {{-- <td>{{ $task->status }}</td> --}}
-                                            <td style="color:
-                                                @if($task->status === 'Pending')
-                                                    grey;
-                                                @elseif($task->status === 'In Progress')
-                                                    red;
-                                                @elseif($task->status === 'Completed')
-                                                    green;
-                                                @endif">
-                                                {{ $task->status }}
+                                            <td>
+                                                <div style="
+                                                    @if($task->status === 'Pending')
+                                                        background-color: #D3D3D3;
+                                                    @elseif($task->status === 'In Progress')
+                                                        background-color: #FFC0C0;
+                                                    @elseif($task->status === 'Completed')
+                                                        background-color: #C0FFC0;
+                                                    @endif
+                                                    padding: 5px;
+                                                    display: inline-block;
+                                                    border-radius: 10px;
+                                                ">
+                                                    {{ $task->status }}
+                                                </div>
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="{{ route('tasks.show', $task->id ) }}">View</a> 
