@@ -193,7 +193,7 @@
                                     </li>
                                     <li>
                                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                            <i class="ri-account-circle-line"></i>
+                                            <i class="ri-list-unordered"></i>
                                             <span>Project Management</span>
                                         </a>
                                         <ul class="sub-menu" aria-expanded="false">
@@ -217,7 +217,7 @@
 
                             <li>
                                 <a href="{{ route('incomes.index') }}" class="waves-effect">
-                                    <i class="ri-dashboard-line"></i>
+                                    <i class="ri-bank-card-fill"></i>
                                     <span>Incomes</span>
                                 </a>
                             </li>  
@@ -229,13 +229,13 @@
                             </li>   --}}
                             <li>
                                 <a href="{{ route('budgets.index') }}" class="waves-effect">
-                                    <i class="ri-dashboard-line"></i>
+                                    <i class="ri-wallet-line"></i>
                                     <span>Budgets</span>
                                 </a>
                             </li>  
                             <li>
                                 <a href="{{ route('expenses.index') }}" class="waves-effect">
-                                    <i class="ri-dashboard-line"></i>
+                                    <i class="ri-shopping-cart-fill"></i>
                                     <span>Expenses</span>
                                 </a>
                             </li>
@@ -247,19 +247,19 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li>
                                         <a href="{{ route('sources.index') }}" class="waves-effect">
-                                            <i class="ri-dashboard-line"></i>
+                                            <i class="ri-wallet-fill"></i>
                                             <span>Income Sources</span>
                                         </a>
                                     </li>  
                                     <li>
                                         <a href="{{ route('expensescategories.index') }}" class="waves-effect">
-                                            <i class="ri-dashboard-line"></i>
+                                            <i class="ri-exchange-funds-line"></i>
                                             <span>Expense Categories</span>
                                         </a>
                                     </li>  
                                     <li>
                                         <a href="{{ route('files.index') }}" class="waves-effect">
-                                            <i class="ri-dashboard-line"></i>
+                                            <i class="ri-folder-2-line"></i>
                                             <span>Files</span>
                                         </a>
                                     </li>
