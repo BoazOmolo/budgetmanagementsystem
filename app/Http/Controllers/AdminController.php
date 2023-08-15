@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Project;
 
 class AdminController extends Controller
 {
     public function admin()
     {
         $totalusers = User::count();
+        $projects = Project::count();
         $administrators = User::where('role_as', 1)->count(); // Retrieve administrators
         $users = User::where('role_as', 0)->count(); // Retrieve regular users
-        return view('admin.dashboard', compact('totalusers', 'administrators', 'users'))->with('success', 'Admin Logged In Successfully!');
+        return view('admin.dashboard', compact('totalusers', 'administrators', 'users','projects'))->with('success', 'Admin Logged In Successfully!');
     }
 
     public function manageUsers()
