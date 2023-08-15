@@ -19,7 +19,12 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        $taskStatusColors = [
+            'Pending' => '#D3D3D3',
+            'In Progress' => '#FFC0C0',
+            'Completed' => '#C0FFC0',
+        ];
+        return view('projects.index', compact('projects','taskStatusColors'));
     }
 
     /**

@@ -52,13 +52,7 @@
                                             {{-- <td>{{ $project->status }}</td> --}}
                                             <td>
                                                 <div style="
-                                                    @if($project->status === 'Pending')
-                                                        background-color: #D3D3D3;
-                                                    @elseif($project->status === 'In Progress')
-                                                        background-color: #FFC0C0;
-                                                    @elseif($project->status === 'Completed')
-                                                        background-color: #C0FFC0;
-                                                    @endif
+                                                    background-color: {{ $taskStatusColors[$project->status] }};
                                                     padding: 5px;
                                                     display: inline-block;
                                                     border-radius: 10px;
