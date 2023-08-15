@@ -55,7 +55,12 @@
                     <a class="btn btn-secondary" href="{{ route('auth.dashboard') }}">Home</a>
                 </div>
             </div>
-            
+            <br>
+            <div>
+                <button onclick="window.print();" class="btn btn-primary">
+                    Export
+                </button>
+            </div>
 
 
         </div>
